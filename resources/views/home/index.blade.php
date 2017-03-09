@@ -33,11 +33,10 @@
     <section class="topic-warp">
         <section class="topic">
             <div class="topic-left">
-                <div>话题</div>
-                <div>链接</div>
+                <div class="scroll"></div>
+                <div class="link"></div>
             </div>
             <div class="topic-right">
-                话题
             </div>
         </section>
     </section>
@@ -46,19 +45,40 @@
     {{--main begin--}}
     <section class="main">
         {{--模块一--}}
-        <section class="main-one"></section>
+        <section class="main-one">
+            <div class="main-one-left"></div>
+            <div class="main-one-right"></div>
+        </section>
         {{--模块一--}}
 
         {{--模块二--}}
-        <section class="main-two"></section>
+        <section class="main-two">
+            <div class="main-tow-left"></div>
+            <div class="main-tow-right"></div>
+        </section>
         {{--模块二--}}
     </section>
     {{--main end--}}
 
     {{--footer begin--}}
     <footer>
-        <div></div>
-        <div></div>
+        <section class="footer-wrap">
+            <div class="copyRight">
+                <ul>
+                    <li>Copyright(C)OWARAICLUB ALL Rights Reserved</li>
+                    <li>转载规则 |</li>
+                    <li>加入我们 |</li>
+                    <li>FAQ |</li>
+                    <li>关于我们</li>
+                </ul>
+            </div>
+            <div class="bottom-logo">
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
     </footer>
     {{--footer end--}}
     </body>
