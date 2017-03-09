@@ -1,5 +1,5 @@
 body,ul,li,div,section,p{margin:0;padding:0;list-style: none}
-body{background:#eee;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;}
+body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;}
 header{height:80px;width:100%;background:#fff;}
 /*头部*/
 .navigation{width:984px;margin:0 auto;height: 100%;position:relative}
@@ -10,7 +10,7 @@ header{height:80px;width:100%;background:#fff;}
 .user-widget li{float:left;margin-left:15px;   }
 /*头部*/
 
-.banner{width:1820px;height:175px;background-color:#959595;}
+.banner{height:175px;background-color:#959595;}
 /*主体*/
 .topic-warp{background-color:#707070}
 .topic{height:480px;background:#707070;width:984px;margin:0 auto;}
@@ -30,10 +30,14 @@ header{height:80px;width:100%;background:#fff;}
 /*主体*/
 
 /*底部*/
-footer{background:#eee}
+footer{background:#eee;position:relative;height:165px;}
 footer ul{margin:0 auto;}
 footer li{float:left;margin-left:12px;}
-.footer-wrap{background:#fff;width:984px;height:160px;margin:0 auto;margin-top:52px;padding-top:52px;}
+.footer-wrap{background:#fff;width:984px;height:160px;margin:0 auto;padding-top:52px;position:absolute;top:52px;left:50%;margin-left:-492px;}
 .copyRight ul{padding-left:109px;height:24px;line-height:24px;color:#959595}
 .bottom-logo ul{margin-top:35px;padding-left:360px;}
 /*底部*/
+
+@media screen and (max-width: 1100px) {
+    .footer-wrap{margin-left:0;left:0px;}
+}
