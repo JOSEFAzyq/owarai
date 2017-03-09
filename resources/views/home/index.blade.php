@@ -30,11 +30,16 @@
     {{--banner end--}}
 
     {{--topic begin--}}
-    <section class="topic">
-        <div class="topic-left">
-            
-        </div>
-        <div class="topic-right"></div>
+    <section class="topic-warp">
+        <section class="topic">
+            <div class="topic-left">
+                <div>话题</div>
+                <div>链接</div>
+            </div>
+            <div class="topic-right">
+                话题
+            </div>
+        </section>
     </section>
     {{--topic end--}}
 

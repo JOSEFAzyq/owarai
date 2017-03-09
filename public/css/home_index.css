@@ -12,5 +12,8 @@ header{height:80px;width:100%}
 
 .banner{height:175px;background-color:#959595;}
 /*主体*/
-.topic{height:480px;background:#707070;}
+.topic-warp{background-color:#707070}
+.topic{height:480px;background:#707070;width:984px;margin:0 auto;}
+.topic-left{float:left;width:624px;height:100%;}
+.topic-right{float:right;width:351px;}
 /*主体*/
