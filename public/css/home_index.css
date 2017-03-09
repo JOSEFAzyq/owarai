@@ -1,5 +1,5 @@
 body,ul,li,div,section,p{margin:0;padding:0;list-style: none}
-body{background:#eee;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
+body{background:#eee;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;}
 header{height:80px;width:100%;background:#fff;}
 /*头部*/
 .navigation{width:984px;margin:0 auto;height: 100%;position:relative}
