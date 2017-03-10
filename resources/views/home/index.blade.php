@@ -16,8 +16,8 @@
                 <div class="user-widget">
                     <ul>
                         <li>用户名</li>
-                        <li>短信</li>
-                        <li>放大镜</li>
+                        <li><img src="{{ URL::asset('images/message.png') }}" alt=""></li>
+                        <li><img src="{{ URL::asset('images/search.png') }}" alt=""></li>
                     </ul>
                 </div>
             </section>
@@ -33,10 +33,63 @@
     <section class="topic-warp">
         <section class="topic">
             <div class="topic-left">
-                <div class="scroll"></div>
-                <div class="link"></div>
+                <div class="scroll">
+                    <img class="scroll-img" src="{{ URL::asset('images/620px.png') }}" alt="">
+                    <p class="scroll-des">【来一发就走字幕组】AMETALK 有趣人才推荐会 (水平居中）</p>
+                </div>
+                <div class="link">
+                    <ul>
+                        <li>男女纠察队</li>
+                        <li>男女纠察队</li>
+                        <li>男女纠察队</li>
+                        <li>男女纠察队</li>
+                    </ul>
+                </div>
             </div>
             <div class="topic-right">
+                <div class="topic-head">
+                    <span>TOP话题</span>
+                    <span>更多</span>
+                </div>
+                <div class="topic-body">
+                    <div class="topic-discus">
+                        <div class="topic-file">
+                            <div class="div"></div>
+                        </div>
+                        <div class="topic-des">
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="topic-discus">
+                        <div class="topic-file"></div>
+                        <div class="topic-des">
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="topic-discus">
+                        <div class="topic-file"></div>
+                        <div class="topic-des">
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="topic-discus">
+                        <div class="topic-file"></div>
+                        <div class="topic-des">
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="topic-discus">
+                        <div class="topic-file"></div>
+                        <div class="topic-des">
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </section>

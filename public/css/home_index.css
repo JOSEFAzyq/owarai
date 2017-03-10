@@ -1,29 +1,37 @@
 body,ul,li,div,section,p{margin:0;padding:0;list-style: none}
-body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;}
+body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;color:#707070;font-size:16px;}
 header{height:80px;width:100%;background:#fff;}
 
 /*公共*/
-.triangle{width:0;height:0;position:absolute;border:10px solid transparent;border-top:14px solid #777;}
+.triangle{width:0;height:0;position:absolute;border:8.5px solid transparent;border-top:17px solid #535353;}
+.topic-file{width:73px;height:73px;background:#ababab;position:relative}
+.topic-file>.div{width:70px;height:70px;background:#fff;position:absolute;transform: rotate(50deg);top:-50px;left:-30px;}
 /*公共*/
 
 /*头部*/
-.navigation{width:984px;margin:0 auto;height: 100%;position:relative;color:#707070}
+.navigation{width:984px;margin:0 auto;height: 100%;position:relative;color:#707070;}
 .logo-zone{margin:0 auto;width:440px;height:100%;text-align: center;font-size:19px;}
-.logo{height: 80px;line-height: 80px;text-align: center}
-.logo li{display:inline-block;height:100%;margin-left:40px;}
-.logo .triangle{top:50px;}
-.user-widget{position:absolute;right:0px;bottom:18px;font-size:16px;}
-.user-widget li{float:left;margin-left:15px;   }
+.logo{height: 80px;line-height: 80px;text-align: center;}
+.logo li{display:inline-block;height:100%;margin-right:40px;}
+.logo li:nth-of-type(3){position:relative}
+.logo li:nth-of-type(2) img{position:relative;top:10px;}
+.logo .triangle{top:32px;right:-25px;}
+.user-widget{position:absolute;right:0px;bottom:6px;font-size:16px;}
+.user-widget li{float:left;margin-left:20px;   }
 /*头部*/
 
 .banner{height:175px;background-color:#959595;}
 /*主体*/
-.topic-warp{background-color:#707070}
+.topic-warp{background-color:#707070;}
 .topic{height:480px;background:#707070;width:984px;margin:0 auto;}
-.topic-left{float:left;width:624px;height:100%;}
+.topic-left{float:left;width:620px;height:100%;}
 .topic-right{float:right;width:350px;height: 100%;background:#fff}
+.topic-discus{margin-bottom:13px;overflow: hidden}
+
 .scroll{height:390px;width:100%;background-color:#fff}
-.link{background:#fff;height:70px;margin-top:20px;}
+.scroll-des{text-align: center;font-size:16px;color:#535353;height:55px;line-height:55px;font-weight:bold}
+.link{background:#fff;height:70px;margin-top:10px;text-align: center;color:#acacac;}
+.link li{display: inline-block;border:1px solid #d8d8d8;padding:0 5px;margin-top:23px;margin-right:27px;border-radius:2px;}
 
 .main{height:1058px;background-color:#eee}
 .main-one{width:984px;height:436px;margin:0 auto;padding-top:16px;}
