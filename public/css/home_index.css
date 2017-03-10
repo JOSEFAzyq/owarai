@@ -1,11 +1,14 @@
 body,ul,li,div,section,p{margin:0;padding:0;list-style: none}
-body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;color:#707070;font-size:16px;}
+body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'Microsoft YaHei','PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB',  Arial, sans-serif;color:#707070;font-size:16px;}
 header{height:80px;width:100%;background:#fff;}
 
 /*公共*/
 .triangle{width:0;height:0;position:absolute;border:8.5px solid transparent;border-top:17px solid #535353;}
+
 .topic-file{width:73px;height:73px;background:#ababab;position:relative}
-.topic-file>.div{width:70px;height:70px;background:#fff;position:absolute;transform: rotate(50deg);top:-50px;left:-30px;}
+.topic-file>.rotate{width:70px;height:70px;background:#fff;position:absolute;transform: rotate(50deg);top:-60px;left:-30px;}
+.topic-number{font-size: 32px;position:absolute;top:-10px;left:8px;font-weight: bold}
+
 /*公共*/
 
 /*头部*/
@@ -25,8 +28,15 @@ header{height:80px;width:100%;background:#fff;}
 .topic-warp{background-color:#707070;}
 .topic{height:480px;background:#707070;width:984px;margin:0 auto;}
 .topic-left{float:left;width:620px;height:100%;}
-.topic-right{float:right;width:350px;height: 100%;background:#fff}
+.topic-right{float:right;width:350px;height: 470px;background:#fff}
+.topic-head{height:36px;margin-bottom:6px;line-height:36px;}
+.topic-head span:nth-of-type(1){margin-left:12px;color:#535353;font-size:19px;}
+.topic-head span:nth-of-type(2){float:right;margin-right:12px;font-size:16px;color:#ababab}
 .topic-discus{margin-bottom:13px;overflow: hidden}
+.topic-file{margin-left:12px;float:left;margin-right:13px;}
+.topic-des{font-size:15px;color:#535353}
+.topic-des p:nth-of-type(1){width:323px;}
+.topic-des p:nth-of-type(2){margin-top:7px;font-size:12px;color:#959595;}
 
 .scroll{height:390px;width:100%;background-color:#fff}
 .scroll-des{text-align: center;font-size:16px;color:#535353;height:55px;line-height:55px;font-weight:bold}
