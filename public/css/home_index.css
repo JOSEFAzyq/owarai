@@ -1,12 +1,18 @@
 body,ul,li,div,section,p{margin:0;padding:0;list-style: none}
 body{padding:0 50px;padding-bottom:44px;background:#fff;font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;}
 header{height:80px;width:100%;background:#fff;}
+
+/*公共*/
+.triangle{width:0;height:0;position:absolute;border:10px solid transparent;border-top:14px solid #777;}
+/*公共*/
+
 /*头部*/
-.navigation{width:984px;margin:0 auto;height: 100%;position:relative}
-.logo-zone{margin:0 auto;width:440px;height:100%;text-align: center;}
-.logo{height: 80px;line-height: 80px}
-.logo li{float:left;width:146px;height:100%}
-.user-widget{position:absolute;right:0px;bottom:18px;}
+.navigation{width:984px;margin:0 auto;height: 100%;position:relative;color:#707070}
+.logo-zone{margin:0 auto;width:440px;height:100%;text-align: center;font-size:19px;}
+.logo{height: 80px;line-height: 80px;text-align: center}
+.logo li{display:inline-block;height:100%;margin-left:40px;}
+.logo .triangle{top:50px;}
+.user-widget{position:absolute;right:0px;bottom:18px;font-size:16px;}
 .user-widget li{float:left;margin-left:15px;   }
 /*头部*/
 

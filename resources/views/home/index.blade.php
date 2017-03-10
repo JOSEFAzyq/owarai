@@ -9,8 +9,8 @@
                 <div class="logo">
                     <ul>
                         <li>首页</li>
-                        <li>笑神本部</li>
-                        <li>论坛</li>
+                        <li><img src="{{ URL::asset('images/logo_l.png') }}" alt=""></li>
+                        <li>论坛<em class="triangle"></em></li>
                     </ul>
                 </div>
                 <div class="user-widget">

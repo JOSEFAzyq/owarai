@@ -1,0 +1,31 @@
+1、
+logo_l 大 
+logo_m 小  
+logo_g 灰色页脚
+
+2、
+message
+search
+
+3、帖子top123
+
+4、番组时间表
+time
+time_hover
+
+返回顶部
+up
+
+字幕组模块
+左右箭头
+arrow_l
+arrow_r
+
+bili、wb、join
+
+滚图模块，右下角翻页块
+dot1 dot2
+
+5、 black
+
+6、视频缩略图
