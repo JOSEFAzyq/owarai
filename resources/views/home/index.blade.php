@@ -203,7 +203,22 @@
                     </div>
                 </div>
             </div>
-            <div class="main-two-right"></div>
+            <div class="main-two-right">
+                <div class="main-two-right-block">
+                    <div class="main-two-right-block-img"></div>
+                    <div class="main-two-right-block-des">
+                        <h4>[讨论]说说你最爱的综艺节目</h4>
+                        <p>什么？听说你喜欢神舌</p>
+                    </div>
+                </div>
+                <div class="main-two-right-block">
+                    <div class="main-two-right-block-img"></div>
+                    <div class="main-two-right-block-des">
+                        <h4>[讨论]说说你最爱的综艺节目</h4>
+                        <p>什么？听说你喜欢神舌</p>
+                    </div>
+                </div>
+            </div>
         </section>
         {{--模块二--}}
     </section>

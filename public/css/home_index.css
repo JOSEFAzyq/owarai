@@ -64,7 +64,12 @@ header{height:80px;width:100%;background:#fff;}
 .main-two-left-block-des{float:left;height:122px;width:164px;margin-left:18px;}
 .main-two-left-block-des h4{margin-bottom:15px;margin-top:16px;}
 .main-two-left-block-des p{letter-spacing: 1px;}
-.main-two-right{width:477px;height:100%;background-color:#fff;float:right}
+.main-two-right{width:477px;height:100%;background-color:#eee;float:right}
+.main-two-right-block{height:282px;width:100%;margin-bottom:20px;}
+.main-two-right-block-img{height:205px;width:100%;background-color:#f29c9f}
+.main-two-right-block-des{background-color:#fff;height:67px;padding:10px 0 0 20px;}
+.main-two-right-block-des h4{margin-bottom:8px;font-size:20px;color:#000;}
+.main-two-right-block-des p{color:#959595;font-size:16px;}
 /*主体*/
 
 /*底部*/
