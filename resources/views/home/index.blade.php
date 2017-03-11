@@ -4,20 +4,61 @@
 
     {{--header begin--}}
     <header>
-        <section class="navigation">
+        <section class="header">
             <section class="logo-zone">
                 <div class="logo">
                     <ul>
                         <li>首页</li>
                         <li><img src="{{ URL::asset('images/logo_l.png') }}" alt=""></li>
-                        <li>论坛<em class="triangle"></em></li>
+                        <li>论坛
+                            <em class="triangle"></em>
+                            <div class="navigation">
+                                <div class="navigation-block">
+                                    <ul>
+                                        <li class="navigation-head">笑神分部</li>
+                                        <li class="navigation-item">伦敦之心字幕组</li>
+                                        <li class="navigation-item">来一发就走字幕组</li>
+                                        <li class="navigation-item">大喜利王字幕组</li>
+                                        <li class="navigation-item">加入我们</li>
+                                    </ul>
+                                </div>
+                                <div class="navigation-block">
+                                    <ul>
+                                        <li class="navigation-head">洪荒之力</li>
+                                        <li class="navigation-item">日综吐槽</li>
+                                        <li class="navigation-item">发大水</li>
+                                        <li class="navigation-item">匿名版</li>
+                                        {{--<li class="navigation-item">加入我们</li>--}}
+                                    </ul>
+                                </div>
+                                <div class="navigation-block">
+                                    <ul>
+                                        <li class="navigation-head">资源分享</li>
+                                        <li class="navigation-item">转载发布</li>
+                                        <li class="navigation-item">生肉资源</li>
+                                        <li class="navigation-item">悬赏求档</li>
+                                        {{--<li class="navigation-item">加入我们</li>--}}
+                                    </ul>
+                                </div>
+                                <div class="navigation-block">
+                                    <ul>
+                                        <li class="navigation-head">投诉&建议</li>
+                                        <li class="navigation-item">招人图</li>
+                                        <li class="navigation-item">加入字幕组NOW!</li>
+                                        {{--<li class="navigation-item">大喜利王字幕组</li>
+                                        <li class="navigation-item">加入我们</li>--}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+
                 <div class="user-widget">
                     <ul>
                         <li>用户名</li>
-                        <li><img src="{{ URL::asset('images/message.png') }}" alt=""></li>
-                        <li><img src="{{ URL::asset('images/search.png') }}" alt=""></li>
+                        <li><img class="align-center" src="{{ URL::asset('images/message.png') }}" alt=""></li>
+                        <li><img class="align-center" src="{{ URL::asset('images/search.png') }}" alt=""></li>
                     </ul>
                 </div>
             </section>
