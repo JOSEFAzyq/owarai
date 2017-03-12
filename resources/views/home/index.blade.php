@@ -80,6 +80,7 @@
         <section class="topic">
             <div class="topic-left">
                 <div class="scroll">
+                    {{--<div class="frosted-glass"></div>--}}
                     <img class="scroll-img" src="{{ URL::asset('images/620px.png') }}" alt="">
                     <p class="scroll-des">【来一发就走字幕组】AMETALK 有趣人才推荐会 (水平居中）</p>
                 </div>

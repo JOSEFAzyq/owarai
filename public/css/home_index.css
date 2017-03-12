@@ -79,7 +79,9 @@ header{position:relative;z-index:999}
 .topic-des p:nth-of-type(1){width:323px;}
 .topic-des p:nth-of-type(2){margin-top:7px;font-size:12px;color:#959595;}
 
-.scroll{height:390px;width:100%;background-color:#fff}
+.frosted-glass{ background: inherit;width:620px;height:335px;}
+.scroll-img{width:620px;height:335px;filter:blur(5px);}
+.scroll{height:390px;width:100%;background-color:#fff;border-radius: 2px;}
 .scroll-des{text-align: center;font-size:16px;color:#535353;height:55px;line-height:55px;font-weight:bold}
 .link{background:#fff;height:70px;margin-top:10px;text-align: center;color:#acacac;}
 .link li{display: inline-block;border:1px solid #d8d8d8;padding:0 5px;margin-top:23px;margin-right:27px;border-radius:2px;}
