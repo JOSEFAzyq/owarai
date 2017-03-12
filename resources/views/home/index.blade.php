@@ -5,6 +5,7 @@
 <script src="{{ URL::asset('js/page/home.js') }}"></script>
 <html>
     <body>
+    <div class="canvas"></div>
 
     {{--header begin--}}
     <header>

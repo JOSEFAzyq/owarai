@@ -2,7 +2,8 @@
  * Created by @josefa on 2017/3/12 0012.
  */
 $(function(){
-    $('.navigation-show').hover(function(){
+
+    /*$('.navigation-show').hover(function(){
         $('.navigation').css('display','block').velocity({
             opacity:'1'
         },{
@@ -19,8 +20,14 @@ $(function(){
         setTimeout(function(){
             $('.navigation').css('display','none')
         },400);
-    })
+    })*/
 
+    //遮蔽罩
+    $('.navigation-show').hover(function(){
+        $('.canvas').addClass('canvas-on');
+    },function(){
+        $('.canvas').removeClass('canvas-on');
+    })
 
 
 
