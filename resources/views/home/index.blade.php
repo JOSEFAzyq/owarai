@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="{{ URL::asset('css/home_index.css') }}">
+<script src="{{ URL::asset('js/common/jquery.js') }}"></script>
+<script src="{{ URL::asset('js/common/velocity.min.js') }}"></script>
+<script src="{{ URL::asset('js/common/velocity.ui.js') }}"></script>
+<script src="{{ URL::asset('js/page/home.js') }}"></script>
 <html>
     <body>
 
@@ -10,8 +14,8 @@
                     <ul>
                         <li>首页</li>
                         <li><img src="{{ URL::asset('images/logo_l.png') }}" alt=""></li>
-                        <li>论坛
-                            <em class="triangle"></em>
+                        <li class="navigation-show">论坛
+                                <em class="triangle"></em>
                             <div class="navigation">
                                 <div class="navigation-block">
                                     <ul>
