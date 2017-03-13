@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="{{ URL::asset('css/home_index.css') }}">
+<script src="{{ URL::asset('js/common/jquery.js') }}"></script>
+<script src="{{ URL::asset('js/common/velocity.min.js') }}"></script>
+<script src="{{ URL::asset('js/common/velocity.ui.js') }}"></script>
+<script src="{{ URL::asset('js/page/home.js') }}"></script>
 <html>
     <body>
+    <div class="canvas"></div>
 
     {{--header begin--}}
     <header>
@@ -10,8 +15,8 @@
                     <ul>
                         <li>首页</li>
                         <li><img src="{{ URL::asset('images/logo_l.png') }}" alt=""></li>
-                        <li>
-                            <div>论坛<em class="triangle"></em></div>
+                        <li class="navigation-show">论坛
+                                <em class="triangle"></em>
                             <div class="navigation">
                                 <div class="navigation-block">
                                     <ul>
@@ -75,6 +80,7 @@
         <section class="topic">
             <div class="topic-left">
                 <div class="scroll">
+                    {{--<div class="frosted-glass"></div>--}}
                     <img class="scroll-img" src="{{ URL::asset('images/620px.png') }}" alt="">
                     <p class="scroll-des">【来一发就走字幕组】AMETALK 有趣人才推荐会 (水平居中）</p>
                 </div>

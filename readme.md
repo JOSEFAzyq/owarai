@@ -24,3 +24,7 @@ Project start and working on front-end rebuild by a phper@J
 
 开始填充内容到网页中
 截止到晚上12点细节弄的差不多了 大概还有1个小时的工作量.. 明天继续
+
+####	2017/03/13
+
+导航条动画+遮蔽罩.后台确定
