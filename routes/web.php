@@ -19,6 +19,7 @@ Route::get('home','HomeController@index');
 
 Route::get('admin/login','AdminController@login');
 Route::get('admin/index','AdminController@index');
+Route::get('admin/articlePublish','AdminController@articlePublish');
 
 
 //测试
