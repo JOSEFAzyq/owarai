@@ -10,8 +10,8 @@
                     <ul>
                         <li>首页</li>
                         <li><img src="{{ URL::asset('images/logo_l.png') }}" alt=""></li>
-                        <li>论坛
-                            <em class="triangle"></em>
+                        <li>
+                            <div>论坛<em class="triangle"></em></div>
                             <div class="navigation">
                                 <div class="navigation-block">
                                     <ul>
