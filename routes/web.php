@@ -17,4 +17,11 @@ Route::get('/', function () {
 
 Route::get('home','HomeController@index');
 
-Route::get('admin','AdminController@index');
+Route::get('admin/login','AdminController@login');
+Route::get('admin/index','AdminController@index');
+
+
+//测试
+Route::get('blade', function () {
+	return view('admin.index');
+});
