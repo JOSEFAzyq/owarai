@@ -1,21 +1,31 @@
-@extends('layouts.admin_layout')
+@extends('layouts.adminLayout')
 
 @section('title','文章发布')
 
+@include('layouts.side_bar')
+
 @section('content')
-
-    <script type="text/javascript" charset="utf-8" src="{{URL::asset('common/ueditor/ueditor.config.js')}}"></script>
-    <script type="text/javascript" charset="utf-8" src="{{URL::asset('common/ueditor/ueditor.all.min.js')}}"> </script>
-    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="{{URL::asset('common/ueditor/ueditor.all.min.js')}}"></script>
-
-    <div id="page-wrapper">
-        <h1>完整demo</h1>
-        <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+    <script src="{{URL::asset('common/ckeditor/ckeditor.js')}}"></script>
+    <div class="container">
+        <div class="row">
+            <form class="">
+                <div class="input-group">
+                    <div class="input-group-addon">选择对应板块</div>
+                    <select name="" id="" class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                    This is my textarea to be replaced with CKEditor.
+                </textarea>
+            </form>
+        </div>
     </div>
 
+
     <script>
-        var ue = UE.getEditor('editor');
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace( 'editor1' );
     </script>
 @endsection

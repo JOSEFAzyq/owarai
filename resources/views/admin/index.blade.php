@@ -1,13 +1,12 @@
-@extends('layouts.admin_layout')
+@extends('layouts.adminLayout')
 
 @section('title','后台')
 
+@include('layouts.side_bar')
+
 @section('content')
     <div id="wrapper">
-
-
-
-        <div id="page-wrapper">
+        <div id="">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
