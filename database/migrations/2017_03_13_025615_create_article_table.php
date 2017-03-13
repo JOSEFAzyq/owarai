@@ -14,7 +14,7 @@ class CreateAdminTable extends Migration
     public function up()
     {
         //
-		Schema::create('admin',function(Blueprint $table){
+		Schema::create('article',function(Blueprint $table){
 			$table->increments('id');
 			$table->string('title',50);
 			$table->text('content');
@@ -36,7 +36,6 @@ class CreateAdminTable extends Migration
 			$table->tinyInteger('is_close',false,2)->unsigned();
 			$table->dateTime('create_time');
 			$table->dateTime('update_time');
-
 		});
     }
 
