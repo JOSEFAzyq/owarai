@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\Admin;
 use App\Http\Models\Article;
 use App\Http\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 
@@ -13,11 +14,12 @@ class AdminController extends Controller
 {
 
 	private $salt=null;
+	protected $admin;
 
 	public function __construct()
 	{
 		$this->salt='josefa';
-		\DB::enableQueryLog();
+		$this->admin=new Admin();
 	}
 
     //登录
@@ -33,20 +35,17 @@ class AdminController extends Controller
 		return redirect('admin/login');
 	}
 
-
-	public function checkLogin()
+    //验证
+	public function checkLogin(Request $request)
 	{
-		$user_name=Input::get('user_name');
-		$password=Input::get('password');
-		$str=md5($password.$this->salt);
-		Log::info('user try to login admin,info=>'.json_encode(Input::get()));
-		if($userInfo=Admin::where(['user_name'=>$user_name,'password'=>$str])->first()){
-			session(['user_name'=>$user_name]);
-			session(['password'=>$str]);
-			return redirect('admin/index');
-		}else{
-			return redirect('admin/login');
-		}
+        Log::info('user try to login admin,info=>'.json_encode(Input::get()));
+        $rs=$this->admin->checkLogin($request);
+        if ($rs){
+            return redirect('admin/index');
+        }else{
+            return redirect('admin/login');
+        }
+
 	}
 
 	public function index()

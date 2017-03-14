@@ -8,10 +8,26 @@ class Admin extends Model
 {
     //
 	protected $table = 'admin';
+	private $salt=null;
 
-    static public function test()
+    public function __construct()
     {
-        /*var_dump($this->find(1));*/
+        $this->salt='josefa';
 	}
+
+    public function checkLogin($request)
+    {
+        $user_name=$request->user_name;
+        $password=$request->password;
+        $str=md5($password.$this->salt);
+        if($userInfo=Admin::where(['user_name'=>$user_name,'password'=>$str])->first()){
+            session(['user_name'=>$user_name]);
+            session(['password'=>$str]);
+            $result=true;
+        }else{
+            $result=false;
+        }
+        return $result;
+    }
 
 }
