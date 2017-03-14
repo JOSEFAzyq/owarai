@@ -13,6 +13,7 @@ How to start:
 *   执行`composer install -vv`
 *   执行`php artisan key:generate`
 *   执行`php artisan serve`,通过127.0.0.1:8000或者通过本地环境/owarai/public进入项目
+*   合作开发:驼峰命名,注释代码,文明你我他.
 
 Schedule:
 ---
@@ -27,4 +28,4 @@ Project start and working on front-end rebuild by a phper@J
 
 ####	2017/03/13
 
-导航条动画+遮蔽罩.后台确定
+导航条动画+遮蔽罩.换了ckeditor的编辑器,后台模板用的sb-admin2
