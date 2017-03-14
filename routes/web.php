@@ -18,9 +18,15 @@ Route::get('/', function () {
 Route::get('home','HomeController@index');
 
 
-Route::get('admin/login','AdminController@login');
-Route::get('admin/test','AdminController@test');
+//admin
 Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
 	Route::get('index','AdminController@index');
 	Route::get('articlePublish','AdminController@articlePublish');
+});
+Route::group(['prefix'=>'admin'],function(){
+	Route::get('login','AdminController@login');
+	Route::get('test','AdminController@test');
+	Route::get('logout','AdminController@logOut');
+
+	Route::post('checklogin','AdminController@checkLogin');
 });
