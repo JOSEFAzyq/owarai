@@ -9,11 +9,13 @@ Description:
 
 How to start:
 ---
-*   复制.env文件,并根据自身环境修改参数
-*   执行`composer install -vv`
-*   执行`php artisan key:generate`
-*   执行`php artisan serve`,通过127.0.0.1:8000或者通过本地环境/owarai/public进入项目
-*   合作开发:驼峰命名,注释代码,文明你我他.
+*	复制.env文件,并根据自身环境修改参数,最好在本地创建owarai数据库
+*	执行`composer install -vv`
+*	执行`php artisan key:generate`
+*	执行`php artisan serve`,通过127.0.0.1:8000或者通过本地环境/owarai/public进入项目
+*	合作开发:驼峰命名,注释代码,文明你我他.
+*	执行'php artisan migrate'可以创建数据结构.
+*	执行'php artisan db:seed --class=articleSeeder'可以填充测试数据
 
 Schedule:
 ---
@@ -29,3 +31,7 @@ Project start and working on front-end rebuild by a phper@J
 ####	2017/03/13
 
 导航条动画+遮蔽罩.换了ckeditor的编辑器,后台模板用的sb-admin2
+
+
+####	2017/03/14
+环境搭建,自动创建数据库结构..自动填充数据..

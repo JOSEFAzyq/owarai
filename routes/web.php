@@ -17,12 +17,10 @@ Route::get('/', function () {
 
 Route::get('home','HomeController@index');
 
+
 Route::get('admin/login','AdminController@login');
-Route::get('admin/index','AdminController@index');
-Route::get('admin/articlePublish','AdminController@articlePublish');
-
-
-//测试
-Route::get('blade', function () {
-	return view('admin.index');
+Route::get('admin/test','AdminController@test');
+Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
+	Route::get('index','AdminController@index');
+	Route::get('articlePublish','AdminController@articlePublish');
 });

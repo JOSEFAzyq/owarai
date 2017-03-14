@@ -43,7 +43,6 @@
                                 </button>
                             </span>
                     </div>
-                    <!-- /input-group -->
                 </li>
                 <li>
                     <a href="{{URL::action('AdminController@index')}}"><i class="fa fa-dashboard fa-fw"></i> 仪表盘</a>
@@ -58,7 +57,6 @@
                             <a href="{{URL::action('AdminController@articlePublish')}}">文章发布</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-dot-circle-o fa-fw"></i> 资讯管理<span class="fa arrow"></span></a>
@@ -70,7 +68,14 @@
                             <a href="#">资源内容</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-dot-circle-o fa-fw"></i>字幕组管理<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">字幕组列表</a>
+                        </li>
+                    </ul>
                 </li>
                 {{--<li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

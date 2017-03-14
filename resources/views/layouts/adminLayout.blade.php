@@ -33,9 +33,8 @@
     </head>
     <body>
 
-            <div id="page-wrapper">
+
                 @yield('content')
-            </div>
     <!-- jQuery -->
     <script src="{{ URL::asset('js/common/jquery.js') }}"></script>
 
