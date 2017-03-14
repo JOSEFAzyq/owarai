@@ -88,7 +88,7 @@ class AdminController extends Controller
 
 		//factory(User::class)->create();
 
-		//factory(Article::class,'article')->create();
+		factory(Article::class,'article')->create();
 		/*$articles=Article::all();
 		foreach ($articles as $article){
 			echo $article->title;
@@ -97,7 +97,9 @@ class AdminController extends Controller
 		/*$article=Article::where('id',7)->first();
 		var_dump($article);*/
 
-		$article=Article::where('id','<',15)->get();
-		var_dump($article);
+		/*$article=Article::where('id','<',15)->get();
+		var_dump($article);*/
+
+		Admin::test();
 	}
 }

@@ -14,8 +14,8 @@ How to start:
 *	执行`php artisan key:generate`
 *	执行`php artisan serve`,通过127.0.0.1:8000或者通过本地环境/owarai/public进入项目
 *	合作开发:驼峰命名,注释代码,文明你我他.
-*	执行'php artisan migrate'可以创建数据结构.
-*	执行'php artisan db:seed --class=articleSeeder'可以填充测试数据
+*	执行`php artisan migrate`可以创建数据结构.
+*	执行`php artisan db:seed --class=OwaraiSeeder`可以填充测试数据
 
 Schedule:
 ---

@@ -22,8 +22,8 @@ class CreateAdminBbschildFansubTable extends Migration
 			$table->Integer('fansub_id',false,5);
 			$table->string('sensitive_auth');
 			$table->string('character',30);
-			$table->dateTime('create_time');
-			$table->dateTime('update_time');
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 
 		Schema::create('fansub',function(Blueprint $table){
@@ -36,8 +36,8 @@ class CreateAdminBbschildFansubTable extends Migration
 		Schema::create('bbs_child',function(Blueprint $table){
 			$table->increments('id');
 			$table->string('name',50);
-			$table->dateTime('create_time');
-			$table->dateTime('update_time');
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
     }
 

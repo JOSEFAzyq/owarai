@@ -34,8 +34,8 @@ class CreateArticleTable extends Migration
 			$table->tinyInteger('is_pay',false,2)->unsigned();
 			$table->tinyInteger('is_show',false,2)->unsigned();
 			$table->tinyInteger('is_close',false,2)->unsigned();
-			$table->dateTime('create_time');
-			$table->dateTime('update_time');
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
     }
 
