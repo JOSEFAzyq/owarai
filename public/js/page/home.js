@@ -13,14 +13,9 @@ $(function(){
     $(window).scroll(function(){
         var h=$(window).scrollTop();
         if(h>450){
-            $('.return').addClass('show');
-            /*$('.return').velocity({
-                right:'10px'
-            },{
-                duration:500
-            })*/
+            $('.return').addClass('showMove');
         }else if(h<=450){
-            $('.return').removeClass('show');
+            $('.return').removeClass('showMove');
         }
 
     })

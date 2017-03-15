@@ -8,12 +8,13 @@ header{height:80px;width:100%;background:#fff;}
 .topic-file{width:73px;height:73px;background:#ababab;position:relative}
 .topic-file>.rotate{width:70px;height:70px;background:#fff;position:absolute;transform: rotate(50deg);top:-60px;left:-30px;}
 .topic-number{font-size: 32px;position:absolute;top:-10px;left:8px;font-weight: bold}
-.return{position:fixed;bottom:255px;right:10px;opacity: 0;display: none;cursor:pointer}
+.return{position:fixed;bottom:-10px;right:10px;opacity: 0;display: none;cursor:pointer}
 /*公共*/
 
 /*遮蔽罩*/
 .canvas{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0, 0, 0, 0.7);z-index:100}
-.show{  display:block;  animation:show 0.5s linear 0s;  opacity: 1;  }
+.show{ display:block;  animation:show 0.5s linear 0s;}
+.showMove{ display:block;  animation:showMove 0.5s linear 0s normal forwards;}
 
 
 /*遮蔽罩*/
@@ -23,7 +24,9 @@ header{height:80px;width:100%;background:#fff;}
 .logo li:nth-of-type(3):hover .triangle{transform:rotateY(180deg);}
 .navigation-show:hover .navigation{display: block;animation:show 0.2s linear 0s;}
 
-@keyframes show { from {  opacity: 0;  } to {  opacity: 1;  } }
+@keyframes show { from {  opacity: 0;} to {  opacity: 1;} }
+
+@keyframes showMove { from {  opacity: 0; bottom:-10px; } to {  opacity: 1; bottom:50px; } }
 
 
 /*动画*/
