@@ -5,7 +5,9 @@ OwaraiClub BBS Project
 
 Description:
 ---
->>  A simple website with samurai heart
+>>	A simple website with samurai heart
+>>	框架:Laravel5.4
+>>	组件:bootstrap,velocity,font-awesome,jquery,ckeditor
 
 How to start:
 ---
@@ -35,3 +37,6 @@ Project start and working on front-end rebuild by a phper@J
 
 ####	2017/03/14
 环境搭建,自动创建数据库结构..自动填充数据..
+
+####	2017/03/15
+文章发布基本搞定.数据库结构还得变动
