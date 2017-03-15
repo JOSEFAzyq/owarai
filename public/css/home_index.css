@@ -5,18 +5,17 @@ header{height:80px;width:100%;background:#fff;}
 /*公共*/
 .triangle{width:0;height:0;position:absolute;border:8.5px solid transparent;border-top:17px solid #535353;}
 .align-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-
 .topic-file{width:73px;height:73px;background:#ababab;position:relative}
 .topic-file>.rotate{width:70px;height:70px;background:#fff;position:absolute;transform: rotate(50deg);top:-60px;left:-30px;}
 .topic-number{font-size: 32px;position:absolute;top:-10px;left:8px;font-weight: bold}
+.return{position:fixed;bottom:255px;right:10px;opacity: 0;display: none;cursor:pointer}
 /*公共*/
 
 /*遮蔽罩*/
 .canvas{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0, 0, 0, 0.7);z-index:100}
-.canvas-on{
-    display:block;
-    animation:show 0.5s linear 0s;
-}
+.show{  display:block;  animation:show 0.5s linear 0s;  opacity: 1;  }
+
+
 /*遮蔽罩*/
 
 /*动画*/
@@ -24,14 +23,8 @@ header{height:80px;width:100%;background:#fff;}
 .logo li:nth-of-type(3):hover .triangle{transform:rotateY(180deg);}
 .navigation-show:hover .navigation{display: block;animation:show 0.2s linear 0s;}
 
-@keyframes show {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+@keyframes show { from {  opacity: 0;  } to {  opacity: 1;  } }
+
 
 /*动画*/
 
@@ -66,10 +59,12 @@ header{position:relative;z-index:999}
 
 /*主体*/
 .banner{height:175px;background-color:#959595;}
-.topic-warp{background-color:#707070;}
+.topic-warp{background-color:#707070;position:relative}
 .topic{height:480px;background:#707070;width:984px;margin:0 auto;}
 .topic-left{float:left;width:620px;height:100%;}
 .topic-right{float:right;width:350px;height: 470px;background:#fff}
+.program{width:30px;height:96px;border:1px solid #787878;position:absolute;text-align: center;top:0;right:-40px}
+.program>p{margin-top:5px;}
 .topic-head{height:36px;margin-bottom:6px;line-height:36px;}
 .topic-head span:nth-of-type(1){margin-left:12px;color:#535353;font-size:19px;}
 .topic-head span:nth-of-type(2){float:right;margin-right:12px;font-size:16px;color:#ababab}

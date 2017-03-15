@@ -23,15 +23,18 @@ class AdminController extends Controller
 	}
 
     //登录
-	public function login()
+	public function login(Request $request)
 	{
+		if($this->admin->checkLogin($request)){
+			return redirect('admin/index');
+		}
 		return view('admin.login');
 	}
 
 	//登出
 	public function logOut()
 	{
-		session()->flush();
+		session()->forget('userInfo');
 		return redirect('admin/login');
 	}
 

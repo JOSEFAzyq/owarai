@@ -3,30 +3,30 @@
  */
 $(function(){
 
-    /*$('.navigation-show').hover(function(){
-        $('.navigation').css('display','block').velocity({
-            opacity:'1'
-        },{
-            duration:200,
-            delay:50
-        })
-    },function(){
-        $('.navigation').velocity({
-            opacity:'0'
-        },{
-            duration:200,
-            delay:50
-        })
-        setTimeout(function(){
-            $('.navigation').css('display','none')
-        },400);
-    })*/
-
     //遮蔽罩
     $('.navigation-show').hover(function(){
-        $('.canvas').addClass('canvas-on');
+        $('.canvas').addClass('show');
     },function(){
-        $('.canvas').removeClass('canvas-on');
+        $('.canvas').removeClass('show');
+    })
+
+    $(window).scroll(function(){
+        var h=$(window).scrollTop();
+        if(h>450){
+            $('.return').addClass('show');
+            /*$('.return').velocity({
+                right:'10px'
+            },{
+                duration:500
+            })*/
+        }else if(h<=450){
+            $('.return').removeClass('show');
+        }
+
+    })
+
+    $('.return').on('click',function(){
+        $("body").velocity("scroll", { duration: 500, easing: "easeOutQuart" });
     })
 
 

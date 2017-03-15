@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ URL::asset('common/font-awesome/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/home_index.css') }}">
 <script src="{{ URL::asset('js/common/jquery.js') }}"></script>
 <script src="{{ URL::asset('js/common/velocity.min.js') }}"></script>
@@ -6,7 +7,7 @@
 <html>
     <body>
     <div class="canvas"></div>
-
+    <div class="return"><i class="fa fa-arrow-circle-up fa-2x"></i></div>
     {{--header begin--}}
     <header>
         <section class="header">
@@ -151,6 +152,7 @@
                     </div>
                 </div>
             </div>
+            <div class="program"><p>番组时间</p></div>
         </section>
     </section>
     {{--topic end--}}

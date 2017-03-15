@@ -11,10 +11,13 @@ class checkAdmin
 	private $salt=null;
 	private $user_name=null;
 	private $password=null;
+	private $valid;
 
 	public function __construct()
 	{
 		$this->salt='josefa';
+		//允许访问后台的角色
+		$this->valid=['super'];
 		if(getenv('APP_ENV')=='dev'){
 			/*session(['user_name'=>'OwaraiClub']);
 			session(['password'=>'soragaaoina.']);*/
@@ -39,13 +42,11 @@ class checkAdmin
 
 	protected function checkAdmin($request)
 	{
-		/*$user_name=$request->input('user_name');
-		$password=$request->input('password');*/
-
-		$this->user_name=session('user_name');
-		$this->password=session('password');
-		$rs=Admin::where(['user_name'=>$this->user_name,'password'=>$this->password])->first();
-		return $rs;
+		if (session('userInfo')&&in_array(session('userInfo')['character'],$this->valid)){
+			return true;
+		}else{
+			return false;
+		}
     }
 
 

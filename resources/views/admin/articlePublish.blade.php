@@ -6,21 +6,31 @@
 
 @section('content')
     <script src="{{URL::asset('common/ckeditor/ckeditor.js')}}"></script>
-    <div class="container">
-        <div class="row">
-            <form class="">
-                <div class="input-group">
-                    <div class="input-group-addon">选择对应板块</div>
-                    <select name="" id="" class="form-control">
-                        <option value=""></option>
-                    </select>
-                </div>
-                <textarea name="editor1" id="editor1" rows="10" cols="80">
-                    This is my textarea to be replaced with CKEditor.
-                </textarea>
-            </form>
+        <div id="page-wrapper">
+            <div class="row">
+                <form class="">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">请输入文章标题:</div>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">请选择对应标签</div>
+                            <select name="tag" id="" class="form-control">
+                                <option value="">综艺</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                        This is my textarea to be replaced with CKEditor.
+                    </textarea>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
 
     <script>

@@ -18,7 +18,7 @@
         <link href="{{ URL::asset('css/common/metisMenu.css') }}" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="{{ URL::asset('css/admin/sb-admin-2.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/admin/pages.css') }}" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="{{ URL::asset('css/common/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
