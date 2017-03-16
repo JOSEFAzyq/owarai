@@ -32,7 +32,7 @@ header{height:80px;width:100%;background:#fff;}
 /*动画*/
 
 /*头部*/
-header{position:relative;z-index:999}
+header{position:fixed;z-index:999;left:0}
 .header{width:984px;margin:0 auto;height: 100%;position:relative;color:#707070;}
 .logo-zone{margin:0 auto;width:440px;height:100%;text-align: center;font-size:19px;}
 .logo{height: 80px;text-align: center;color:#707070}
@@ -61,7 +61,7 @@ header{position:relative;z-index:999}
 
 
 /*主体*/
-.banner{height:175px;background-color:#959595;}
+.banner{height:175px;background-color:#959595;padding-top:80px;}
 .topic-warp{background-color:#707070;position:relative}
 .topic{height:480px;background:#707070;width:984px;margin:0 auto;}
 .topic-left{float:left;width:620px;height:100%;}

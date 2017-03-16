@@ -22,6 +22,7 @@ Route::get('home','HomeController@index');
 Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
 	Route::get('index','AdminController@index');
 	Route::get('articlePublish','AdminController@articlePublish');
+	Route::post('articlePublish','AdminController@articleHandle');
 });
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('login','AdminController@login');

@@ -432,3 +432,6 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+
+/*自定义样式*/
+.marginBottom{margin-bottom: 10px;}

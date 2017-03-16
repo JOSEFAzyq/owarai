@@ -12,7 +12,7 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="{{URL::action('AdminController@checkLogin')}}" method="post">
+                    <form role="form" action="{{URL::action('AdminController@checkLogin')}}" method="POST">
                         {{ csrf_field() }}
                         <fieldset>
                             <div class="form-group">

@@ -20,6 +20,20 @@ class AdminController extends Controller
 	{
 		$this->salt='josefa';
 		$this->admin=new Admin();
+		//本地自动登录咯
+        if(getenv('APP_ENV')=='local'){
+            session(['userInfo'=>[
+                'id'=>1,
+                'user_name'=>'OwaraiClub',
+                'password'=>'93a637fb7cd4343af8ca539093aeec5a',
+                'bbs_child_id'=>0,
+                'fansub_id'=>0,
+                'sensitive_auth'=>'',
+                'character'=>'super',
+                'created_at'=>'2017-03-14 22:00:18',
+                'updated_at'=>'2017-03-14 22:00:20'
+            ]]);
+        }
 	}
 
     //登录
@@ -53,6 +67,7 @@ class AdminController extends Controller
 
 	public function index()
 	{
+
 		return view('admin.index');
 	}
 
@@ -62,6 +77,11 @@ class AdminController extends Controller
 	public function articlePublish()
 	{
 		return view('admin.articlePublish');
+	}
+
+    public function articleHandle()
+    {
+
 	}
 
 	public function test()
@@ -90,7 +110,7 @@ class AdminController extends Controller
 
 		//factory(User::class)->create();
 
-		factory(Article::class,'article')->create();
+		/*factory(Article::class,'article')->create();*/
 		/*$articles=Article::all();
 		foreach ($articles as $article){
 			echo $article->title;
@@ -102,6 +122,6 @@ class AdminController extends Controller
 		/*$article=Article::where('id','<',15)->get();
 		var_dump($article);*/
 
-		Admin::test();
+		/*Admin::test();*/
 	}
 }

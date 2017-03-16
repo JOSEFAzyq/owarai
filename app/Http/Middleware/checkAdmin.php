@@ -18,10 +18,7 @@ class checkAdmin
 		$this->salt='josefa';
 		//允许访问后台的角色
 		$this->valid=['super'];
-		if(getenv('APP_ENV')=='dev'){
-			/*session(['user_name'=>'OwaraiClub']);
-			session(['password'=>'soragaaoina.']);*/
-		}
+
 	}
 
     /**
