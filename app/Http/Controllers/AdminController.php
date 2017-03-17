@@ -101,8 +101,9 @@ class AdminController extends Controller
 		}else{
 			return '发布失败咯';
 		}
-
 	}
+
+
 
 	public function test()
 	{

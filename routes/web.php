@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('home','HomeController@index');
 
+//resource
+Route::resource('article', 'Services\ArticleController');
 
 //admin
 Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
