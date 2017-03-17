@@ -71,6 +71,12 @@ class AdminController extends Controller
 		return view('admin.index');
 	}
 
+	//文章列表
+	public function articleList()
+	{
+		return view('admin.articleList');
+	}
+
 	/*
 	 * 文章发布
 	 * */
@@ -79,8 +85,22 @@ class AdminController extends Controller
 		return view('admin.articlePublish');
 	}
 
+	//文章处理
     public function articleHandle()
     {
+		$articleData=Input::get();
+		foreach ($articleData as $k=>$v){
+			if($v=='on'){
+				$articleData[$k]=1;
+			}
+		}
+		$articleData['user_id']=1;
+		$rs=Article::create($articleData);
+		if($rs){
+			return redirect('admin/articleList');
+		}else{
+			return '发布失败咯';
+		}
 
 	}
 

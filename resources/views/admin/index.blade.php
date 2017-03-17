@@ -6,6 +6,13 @@
 
 @section('content')
     <div id="page-wrapper">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>欢迎来到OwaraiClub后台管理</h1>
+                <p>Never compromise, not even in the face of Armageddon</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">给我建议</a></p>
+            </div>
+        </div>
         <div id="wrapper">
             <div id="">
                 <div class="row">

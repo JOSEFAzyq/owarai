@@ -30,27 +30,29 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+
+        <!-- jQuery -->
+        <script src="{{ URL::asset('js/common/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ URL::asset('js/common/bootstrap.min.js') }}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{{ URL::asset('js/common/metisMenu.js') }}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{{ URL::asset('js/admin/sb-admin-2.js') }}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        {{--<script src="{{ URL::asset('js/common/raphael.min.js') }}"></script>
+        <script src="{{ URL::asset('js/common/morris.min.js') }}"></script>
+        <script src="{{ URL::asset('js/common/morris-data.js') }}"></script>--}}
+
     </head>
     <body>
 
-
-                @yield('content')
-    <!-- jQuery -->
-    <script src="{{ URL::asset('js/common/jquery.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ URL::asset('js/common/bootstrap.min.js') }}"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ URL::asset('js/common/metisMenu.js') }}"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ URL::asset('js/admin/sb-admin-2.js') }}"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="{{ URL::asset('js/common/raphael.min.js') }}"></script>
-    <script src="{{ URL::asset('js/common/morris.min.js') }}"></script>
-    <script src="{{ URL::asset('js/common/morris-data.js') }}"></script>
+    <!--模板页面-->
+     @yield('content')
 
     </body>
 

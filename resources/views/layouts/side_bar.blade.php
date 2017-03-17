@@ -51,7 +51,7 @@
                     <a href="#"><i class="fa fa-file-text fa-fw"></i> 文章管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">文章列表</a>
+                            <a href="{{URL::action('AdminController@articleList')}}">文章列表</a>
                         </li>
                         <li>
                             <a href="{{URL::action('AdminController@articlePublish')}}">文章发布</a>

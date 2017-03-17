@@ -19,7 +19,8 @@ class CreateArticleTable extends Migration
 			$table->string('title',50)->default('');
             $table->string('user_name',30)->default('');
 			$table->text('content')->default('');
-			$table->string('tags','200')->default('');
+			$table->integer('tag_id',false,5)->default(0);
+			$table->string('custom_tags','200')->default('');
 			$table->integer('user_id',false,10);
 			$table->integer('bbschild_id',false,5)->unsigned()->default(0);
 			$table->integer('fansub_id',false,5)->unsigned()->default(0);
@@ -30,6 +31,7 @@ class CreateArticleTable extends Migration
 			$table->integer('view',false,10)->unsigned()->default(0);
 			$table->integer('pay_amount',false,10)->unsigned()->default(0);
             $table->integer('ranked',false,5)->unsigned()->default(0);
+			$table->tinyInteger('is_home',false,2)->unsigned()->default(0);
 			$table->tinyInteger('is_top',false,2)->unsigned()->default(0);
 			$table->tinyInteger('is_elite',false,3)->unsigned()->default(0);
 			$table->tinyInteger('is_ori',false,2)->unsigned()->default(0);
