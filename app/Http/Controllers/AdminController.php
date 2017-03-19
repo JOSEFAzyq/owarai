@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * 渲染视图的控制器写在上方,接口写在下方,可以通用的功能写用library封装
+ * */
 namespace App\Http\Controllers;
 
 
@@ -9,6 +11,7 @@ use App\Http\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
+use App\Http\Libraries\AdminTool;
 
 class AdminController extends Controller
 {
@@ -103,6 +106,22 @@ class AdminController extends Controller
 		}
 	}
 
+	//文章列表接口
+    public function articleList_get(Request $request)
+    {
+        /*$adminTool=new AdminTool();
+        $adminTool->articleDataTable($request->all());*/
+        /*echo json_encode(Article::all()->toArray());*/
+
+        $rs=Article::all();
+        var_dump($rs);
+        /*$adminTool=new AdminTool();
+        $rs=$adminTool->articleDataTable($request->all());
+        echo json_encode($rs,JSON_UNESCAPED_UNICODE);*/
+
+    }
+
+
 
 
 	public function test()
@@ -144,5 +163,8 @@ class AdminController extends Controller
 		var_dump($article);*/
 
 		/*Admin::test();*/
+		//var_dump(route('home'));
+        $rs=Article::all();
+        var_dump($rs);
 	}
 }
