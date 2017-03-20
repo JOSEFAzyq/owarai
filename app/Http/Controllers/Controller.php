@@ -9,5 +9,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    public function __construct()
+    {
+
+        \DB::enableQueryLog();
+    }
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

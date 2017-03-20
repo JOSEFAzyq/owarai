@@ -16,3 +16,25 @@ Route::get('/', function () {
 });
 
 Route::get('home','HomeController@index');
+
+//resource
+Route::resource('article', 'Services\ArticleController');
+
+//admin
+Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
+	Route::get('index','AdminController@index');
+	Route::get('articlePublish','AdminController@articlePublish');
+	Route::post('articlePublish','AdminController@articleHandle');
+	Route::get('articleList','AdminController@articleList');
+
+	//文章接口
+    Route::get('article/list','AdminController@articleList_get');
+});
+
+Route::group(['prefix'=>'admin'],function(){
+	Route::get('login','AdminController@login');
+	Route::get('test','AdminController@test');
+	Route::get('logout','AdminController@logOut');
+
+	Route::post('checklogin','AdminController@checkLogin');
+});

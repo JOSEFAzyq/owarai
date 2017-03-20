@@ -16,7 +16,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "App/Http/Libraries/admintool.php"
         ],
         "psr-4": {
             "App\\": "app/"
