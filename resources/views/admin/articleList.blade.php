@@ -22,11 +22,13 @@
                         <table id="example" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>序号</th>
+                                <th>标题</th>
+                                <th>摘要</th>
+                                <th>状态</th>
+                                <th>阅读量</th>
+                                <th>发布时间</th>
+                                <th>修改</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
@@ -40,7 +42,4 @@
     <script src="{{asset('common/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('common/datatables/dataTables.bootstrap.min.js')}}"></script>
     <script src="{{asset('js/admin/article.js')}}"></script>
-    <script>
-
-    </script>
 @endsection
