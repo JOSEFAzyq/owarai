@@ -9,6 +9,7 @@ use App\Http\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Libraries\TestMy;
 
 class AdminController extends Controller
 {
@@ -48,6 +49,7 @@ class AdminController extends Controller
 	//登出
 	public function logOut()
 	{
+
 		session()->forget('userInfo');
 		return redirect('admin/login');
 	}
@@ -67,7 +69,8 @@ class AdminController extends Controller
 
 	public function index()
 	{
-
+		$a=new TestMy();
+		$a->test();
 		return view('admin.index');
 	}
 
