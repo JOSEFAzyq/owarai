@@ -11,11 +11,7 @@ use App\Http\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
-<<<<<<< HEAD
-use App\Http\Controllers\Libraries\TestMy;
-=======
 use App\Http\Libraries\AdminTool;
->>>>>>> a812a5b5a0190b4fbc1b710cab82f3a19cb6b30a
 
 class AdminController extends Controller
 {
@@ -75,8 +71,6 @@ class AdminController extends Controller
 
 	public function index()
 	{
-		$a=new TestMy();
-		$a->test();
 		return view('admin.index');
 	}
 

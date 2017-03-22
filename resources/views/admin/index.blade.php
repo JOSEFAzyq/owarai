@@ -6,7 +6,7 @@
 
 @section('content')
     <div id="page-wrapper">
-        <div class="container">
+        <div class="container" style="overflow: hidden;width: 100%">
             <div class="jumbotron">
                 <h1>欢迎来到OwaraiClub后台管理</h1>
                 <p>Never compromise, not even in the face of Armageddon</p>
