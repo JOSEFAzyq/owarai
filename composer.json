@@ -17,11 +17,8 @@
     "autoload": {
         "classmap": [
             "database",
-<<<<<<< HEAD
-            "app/Http/Libraries/TestMy.php"
-=======
+            "app/Http/Libraries/TestMy.php",
             "App/Http/Libraries/admintool.php"
->>>>>>> a812a5b5a0190b4fbc1b710cab82f3a19cb6b30a
         ],
         "psr-4": {
             "App\\": "app/"
