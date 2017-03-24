@@ -6,7 +6,11 @@ OwaraiClub BBS Project
 Description:
 ---
 >>	A simple website with samurai heart
+
+
 >>	框架:Laravel5.4,php>=5.59
+
+
 >>	组件:bootstrap,velocity,font-awesome,jquery,ckeditor
 
 How to start:
