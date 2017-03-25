@@ -9,7 +9,7 @@ Description:
 
 >>	框架:Laravel5.4,php>=5.59
 
->>	组件:bootstrap,velocity,font-awesome,jquery,ckeditor
+>>	组件:bootstrap,velocity,font-awesome,jquery,ckeditor，datatables
 
 How to start:
 ---
