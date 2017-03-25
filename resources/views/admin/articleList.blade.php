@@ -6,7 +6,8 @@
 
 @section('content')
 
-    <link rel="stylesheet" href="{{asset('common/datatables/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('common/datatables/semantic.min.css')}}">
+    <link rel="stylesheet" href="{{asset('common/datatables/dataTables.semanticui.min.css')}}">
 
     <div id="page-wrapper">
         <div class="row">
@@ -16,10 +17,10 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        DataTables Advanced Tables
+                        高次幂序列dubStep魔法
                     </div>
                     <div class="panel-body">
-                        <table id="example" class="table table-striped table-bordered">
+                        <table id="example" class="ui celled table" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>序号</th>
@@ -40,6 +41,7 @@
         </div>
     </div>
     <script src="{{asset('common/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('common/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('common/datatables/dataTables.semanticui.min.js')}}"></script>
+    <script src="{{asset('common/datatables/semantic.min.js')}}"></script>
     <script src="{{asset('js/admin/article.js')}}"></script>
 @endsection

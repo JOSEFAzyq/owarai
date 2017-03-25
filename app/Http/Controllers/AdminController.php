@@ -109,15 +109,19 @@ class AdminController extends Controller
 	//文章列表接口
     public function articleList_get(Request $request)
     {
-        /*$adminTool=new AdminTool();
-        $adminTool->articleDataTable($request->all());*/
-        /*echo json_encode(Article::all()->toArray());*/
-
-        $rs=Article::all();
-        var_dump($rs);
-        /*$adminTool=new AdminTool();
-        $rs=$adminTool->articleDataTable($request->all());
-        echo json_encode($rs,JSON_UNESCAPED_UNICODE);*/
+        $data['draw']=$request->get('draw');
+        $start=$request->get('start');
+        $length=$request->get('length');
+        $rs=Article::select('id','title','content','status','view','created_at')->offset($start)->limit($length)->get()->toArray();
+        foreach ($rs as $k=>$v){
+            $rs[$k]['content']=mb_substr($v['content'],0,40).'...';
+        }
+        $data['recordsTotal']=Article::count();
+        $data['recordsFiltered']=Article::count();
+        $data['data']=$rs;
+        echo json_encode($data);
+        //echo json_encode($rs);
+        //var_dump($rs);
 
     }
 
