@@ -20,17 +20,18 @@ Route::get('home','HomeController@index');
 //resource
 Route::resource('article', 'Services\ArticleController');
 
-//admin
+//admin 需要验证权限的页面
 Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
 	Route::get('index','AdminController@index');
 	Route::get('articlePublish','AdminController@articlePublish');
 	Route::post('articlePublish','AdminController@articleHandle');
 	Route::get('articleList','AdminController@articleList');
-
+    Route::get('userInfo','AdminController@userInfo');
 	//文章接口
     Route::get('article/list','AdminController@articleList_get');
 });
 
+//admin 不需要验证权限
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('login','AdminController@login');
 	Route::get('test','AdminController@test');

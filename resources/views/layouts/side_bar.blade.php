@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+        <a class="navbar-brand" href="{{URL::action('admin/index')}}">笑神后台</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -17,12 +17,11 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户信息</a>
+                <li><a href="{{URL::action('admin/userInfo')}}"><i class="fa fa-user fa-fw"></i> 用户信息</a>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
-                </li>
+                {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a></li>--}}
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                <li><a href="{{URL::action('admin/logout')}}"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->

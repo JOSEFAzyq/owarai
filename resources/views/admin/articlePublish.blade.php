@@ -89,8 +89,8 @@
     </script>
     <script>
         window.onload=function(){
-            $('#is_top').on('click',function(){
-                if($('#is_top').is(':checked')){
+            $('#is_home').on('click',function(){
+                if($('#is_home').is(':checked')){
                     $('#ranked').attr('disabled',false);
                 }else{
                     $('#ranked').attr('disabled',true);

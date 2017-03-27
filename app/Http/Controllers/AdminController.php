@@ -121,9 +121,12 @@ class AdminController extends Controller
         $data['recordsFiltered']=Article::count();
         $data['data']=$rs;
         echo json_encode($data);
-        //echo json_encode($rs);
-        //var_dump($rs);
-
+    }
+    
+    //用户信息
+    public function userInfo()
+    {
+        echo 'userInfo';
     }
 
 
