@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use App\Http\Libraries\AdminTool;
+use App\http\Models\Carousel;
 
 class AdminController extends Controller
 {
@@ -171,4 +172,87 @@ class AdminController extends Controller
         $rs=Article::all();
         var_dump($rs);
 	}
+
+
+
+
+    public function carouselAdd()
+    {
+        return view('admin.carouselAdd');
+    }
+
+    public function doCarouselAdd()
+    {
+
+        $file = 'avatar_file';
+
+        $allowTypes = ['image/jpeg','image/png'];
+
+        if($_FILES[$file]['size'] > 5*1024*1024)
+            return $this->reJson(0,'图片过大');
+
+        if(!in_array($_FILES[$file]['type'],$allowTypes))
+            return $this->reJson(0,'图片类型错误');
+
+        $carousel = new Carousel();
+
+        return $carousel->add();
+
+    }
+
+    public function carouselSelect()
+    {
+
+
+        return view('admin.carouselList');
+    }
+
+    public function doCarouselSelect()
+    {
+
+
+        $data =
+            [
+                'start'=>Input::get('start'),
+                'length'=>Input::get('length')
+            ];
+
+        $carousel = new Carousel();
+
+        $records = $carousel->getList($data);
+
+        return $records;
+
+    }
+
+    public function carouselConfig()
+    {
+        $id = Input::get('id');
+
+
+        if ($id == null)
+//            return redirect()->back()->with('没有这一个。。');
+
+            $carousel = Carousel::find(['id'=>1]);
+
+        if ($carousel)
+            $carousel = $carousel->toArray()[0];
+        else
+            //            return redirect()->back()->with('没有这一个。。');
+
+            $carousel['url'] = public_path('uploads/carousel/').$carousel['url'];
+
+
+        return view('admin.carouselConfig',['carousel'=>$carousel]);
+    }
+
+    public function doCarouselConfig()
+    {
+
+    }
+
+    private function reJson($status = 0,$msg = '',$data = '')
+    {
+        return json_encode(["status"=>$status,"msg"=>$msg,"data"=>$data]);
+    }
 }
