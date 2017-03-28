@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//home
 Route::get('home','HomeController@index');
+//article
+Route::get('article/detail','ArticleController@detail');
 
-//resource
-Route::resource('article', 'Services\ArticleController');
+
 
 //admin 需要验证权限的页面
 Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
