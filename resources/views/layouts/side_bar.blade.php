@@ -73,11 +73,12 @@
                 </li>
                 {{--字幕组管理--}}
                 <li>
-                    <a href="#"><i class="fa fa-dot-circle-o fa-fw"></i>字幕组管理<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-group fa-fw"></i> 字幕组管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{URL::action('AdminController@articleList')}}">字幕组列表</a>
                         </li>
+                        <li>
                     </ul>
                 </li>
             </ul>
