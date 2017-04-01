@@ -38,6 +38,7 @@ class AdminController extends Controller
                 'updated_at'=>'2017-03-14 22:00:20'
             ]]);
         }
+        $this->checkRole();
 	}
 
     //登录

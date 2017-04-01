@@ -11,8 +11,12 @@ class Controller extends BaseController
 {
     public function __construct()
     {
-
         \DB::enableQueryLog();
     }
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function checkRole()
+    {
+        
+    }
 }
