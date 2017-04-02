@@ -37,6 +37,21 @@ Route::group(['prefix'=>'admin','middleware'=>'checkAdmin'],function(){
 	Route::any('doCarouselConfig','AdminController@doCarouselConfig');
 	Route::any('carouselDelete','AdminController@carouselDelete');
 
+    //字幕组管理
+    Route::any('addSubTitleGroupAccount','AdminController@addSubTitleGroupAccount');
+    Route::any('doAddSubTitleGroupAccount','AdminController@doAddSubTitleGroupAccount');
+    Route::any('subTitleGroupAccountList','AdminController@subTitleGroupAccountList');
+    Route::any('updateSubTitleGroup','AdminController@updateSubTitleGroup');
+    Route::any('doUpdateSubTitleGroup','AdminController@doUpdateSubTitleGroup');
+    Route::any('deleteSubTitleGroup','AdminController@deleteSubTitleGroup');
+
+    Route::any('addSubTitleGroup','AdminController@addSubTitleGroup');
+    Route::any('doAddSubTitleGroup','AdminController@doAddSubTitleGroup');
+    Route::any('subTitleGroupList','AdminController@subTitleGroupList');
+    Route::any('updateSubTitleGroupAccount','AdminController@updateSubTitleGroupAccount');
+    Route::any('doUpdateSubTitleGroupAccount','AdminController@doUpdateSubTitleGroupAccount');
+    Route::any('deleteSubTitleGroupAccount','AdminController@deleteSubTitleGroupAccount');
+
 	//文章接口
     Route::get('article/list','AdminController@articleList_get');
 });

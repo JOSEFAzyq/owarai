@@ -463,4 +463,376 @@ class AdminController extends Controller
         return json_encode(["status"=>$status,"msg"=>$msg,"data"=>$data]);
     }
 
+    /**
+     * 记录日志
+     * @param $msg
+     * @param string $path
+     */
+    private function log($msg,$path = '')
+    {
+
+        if ($path == '')
+            $path = debug_backtrace()[1];
+
+        $log = new \Monolog\Logger('vikin');
+
+        $log->pushHandler(
+            new \Monolog\Handler\StreamHandler(
+                storage_path('logs/'.$path),
+                \Monolog\Logger::INFO
+            )
+        );
+
+        $log->addInfo(json_encode(['msg'=>$msg,'accountId'=>\session('userInfo')['id']]));
+    }
+
+    /**
+     * 检查是否为超级管理员
+     * @return bool
+     */
+    private function checkAuth()
+    {
+        if (\session('userInfo')['character'] != 'super')
+            return false;
+        else
+            return true;
+    }
+
+    /**
+     * 增加字幕组页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addSubTitleGroup()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        return view('admin.addSubTitleGroup');
+    }
+
+    /**
+     * 执行增加字幕组
+     * @return string
+     */
+    public function doAddSubTitleGroup()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'只有超级管理员才能访问字幕组模块');
+
+        $username = Input::get('username');
+
+        if (!$username)
+            return $this->reJson(0,'填完才能加');
+
+        $exist = \App\Http\Models\SubTitle::where('name',$username)->select('id')->get()->toArray();
+
+        if ($exist)
+            return $this->reJson(0,'字幕组已存在');
+
+        $data =
+            [
+                'name'=>$username,
+                'create_time'=>date('Y-m-d H:i:s'),
+                'update_time'=>date('Y-m-d H:i:s'),
+            ];
+
+        $insert = \App\Http\Models\SubTitle::insert($data);
+
+        $this->log($data,__FUNCTION__);
+
+        return $insert ? $this->reJson(1,'添加字幕组成功') : $this->reJson(0,'服务器错误');
+
+    }
+
+    /**
+     * 增加字幕组列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subTitleGroupList()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        $groups = DB::table('fansub')->paginate(15);
+
+        return view('admin.subTitleGroupList',['items'=>$groups->toArray()['data'],'page'=>$groups->links()]);
+    }
+
+    /**
+     * 修改字幕组信息
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function updateSubTitleGroup()
+    {
+
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        $id = Input::get('id');
+
+        if (!$id)
+            return view('admin.index');
+
+        $item = \App\Http\Models\SubTitle::where('id',$id)->get()->toArray();
+
+        return view('admin.updateSubTitleGroup',['item'=>$item[0]]);
+    }
+
+    /**
+     * 执行修改字幕组
+     * @return string
+     */
+    public function doUpdateSubTitleGroup()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'没有权限');
+
+        $id = Input::get('id');
+        $name = Input::get('username');
+
+        if (!$name || !$id)
+            return $this->reJson(0,'填写完才能修改');
+
+        $exist = \App\Http\Models\SubTitle::where('name',$name)->select('id')->get()->toArray();
+
+        if ($exist) {
+            if ($exist[0]['id'] != $id ) {
+                return $this->reJson(0,'这个字幕组的名字已经有了');
+            }
+        }
+
+        $data =
+            [
+                'name'=>$name,
+                'update_time'=>date('Y-m-d H:i:s')
+            ];
+
+        $update = \App\Http\Models\SubTitle::where('id',$id)->update();
+
+        $this->log($data,__FUNCTION__);
+
+        if ($update)
+            return $this->reJson(1,'修改成功');
+        else
+            return $this->reJson(0,'系统错误');
+
+    }
+
+    /**
+     * 删除字幕组
+     * @return string
+     */
+    public function deleteSubTitleGroup()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'没有权限');
+
+        $id = Input::get('id');
+
+        if (!$id)
+            return $this->reJson(0,'参数不足');
+
+        $check = \App\Http\Models\Admin::where('fansub_id',$id)->select('id')->get()->toArray();
+
+        if ($check)
+            return $this->reJson(0,'该字幕组存在账户， 请先删除账户');
+
+        $delete = \App\Http\Models\SubTitle::where('id',$id)->delete();
+
+        $this->log($id,__FUNCTION__);
+
+        return $delete ?
+            $this->reJson(1,'删除成功') :
+            $this->reJson(0,'系统错误');
+
+
+    }
+
+    /**
+     * 增加字幕组账户页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addSubTitleGroupAccount()
+    {
+
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        $fanSubs = \App\Http\Models\SubTitle::select('name','id')->get()->toArray();
+
+        return view('admin.addSubTitleGroupAccount',['fanSubs'=>$fanSubs]);
+    }
+
+    /**
+     * 执行增加字幕组账户页面
+     * @return string
+     */
+    public function doAddSubTitleGroupAccount()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'只有超级管理员才能加账号');
+
+        $password = Input::get('password');
+        $confirm_password = Input::get('confirm_password');
+        $username = Input::get('username');
+        $fansub_id = Input::get('fansub_id');
+
+        if (!$username || !$password || !$confirm_password || !$fansub_id)
+            return $this->reJson(0,'填完才能加');
+
+        if ($password != $confirm_password)
+            return $this->reJson(0,'密码不一致');
+
+        $exist = \App\Http\Models\Admin::where('user_name',$username)->select('id')->get()->toArray();
+
+        if ($exist)
+            return $this->reJson(0,'账号已存在');
+
+        $data =
+            [
+                'user_name'=>$username,
+                // 'password'=>password_hash($password,PASSWORD_DEFAULT,['cost'=>12]),
+                'password'=>md5($this->salt.$password),
+                'fansub_id'=>$fansub_id,
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+                'bbs_child_id'=>0,
+                'character'=>'',
+                'sensitive_auth'=>''
+            ];
+
+        $insert = \App\Http\Models\Admin::insert($data);
+
+        $this->log($data,__FUNCTION__);
+
+        return $insert ? $this->reJson(1,'添加字幕组账号成功') : $this->reJson(0,'服务器错误');
+    }
+
+    /**
+     * 字幕组账户列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subTitleGroupAccountList()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        $subTitles = \App\Http\Models\SubTitle::select('id','name')->get()->toArray();
+
+        $subArr = [];
+
+        foreach ($subTitles as $v) {
+            $subArr[$v['id']] = $v['name'];
+        }
+
+        $groups = \App\Http\Models\Admin::where('fansub_id','>',0)->where('character','<>','super')->paginate(15);
+
+        return view('admin.subTitleGroupAccountList',['items'=>$groups->toArray()['data'],'page'=>$groups->links(),'subArr'=>$subArr]);
+
+    }
+
+    /**
+     * 修改字幕组账户
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function updateSubTitleGroupAccount()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return view('admin.index');
+
+        $id = Input::get('id');
+
+        if (!$id)
+            return view('admin.index');
+
+        $fanSubs = \App\Http\Models\SubTitle::select('name','id')->get()->toArray();
+
+        $item = \App\Http\Models\Admin::where('id',$id)->get()->toArray()[0];
+
+        return view('admin.updateSubTitleGroupAccount',['fanSubs'=>$fanSubs,'item'=>$item]);
+    }
+
+    /**
+     * 执行修改字幕组账户
+     * @return string
+     */
+    public function doUpdateSubTitleGroupAccount()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'没有权限');
+
+        $id = Input::get('id');
+        $fansub_id = Input::get('fansub_id');
+        $username = Input::get('username');
+        $password = Input::get('password');
+        $confirm_password = Input::get('confirm_password');
+
+        if (!$id || !$fansub_id || !$username)
+            return $this->reJson(0,'参数不足');
+
+
+        $exist = \App\Http\Models\Admin::where('user_name',$username)->select('id')->get()->toArray();
+
+        foreach ($exist as $v)
+        {
+            if ($v['id'] != $id)
+                return $this->reJson(0,'账号已存在');
+        }
+
+        $updateData = ['updated_at'=>date('Y-m-d H:i:s'),'fansub_id'=>$fansub_id,'user_name'=>$username];
+
+        if ($password != '******') {
+            if ($password != $confirm_password)
+                return $this->reJson(0,'两次密码不一致');
+
+            $updateData['password'] = md5($this->salt.$password);
+        }
+
+        $update = \App\Http\Models\Admin::where('id',$id)->update($updateData);
+
+        $this->log($updateData,__FUNCTION__);
+
+        return $update ?
+            $this->reJson(1,'修改成功'):
+            $this->reJson(0,'系统错误');
+
+    }
+
+    /**
+     * 删除字幕组账户
+     * @return string
+     */
+    public function deleteSubTitleGroupAccount()
+    {
+        //检查权限
+        if (!$this->checkAuth())
+            return $this->reJson(0,'没有权限');
+
+        $id = Input::get('id');
+
+        if (!$id)
+            return $this->reJson(0,'参数不足');
+
+        //TODO 根据后续逻辑  判断能不能直接删除
+
+        $delete = \App\Http\Models\Admin::where('id',$id)->delete();
+
+        $this->log($id,__FUNCTION__);
+
+        return $delete ?
+            $this->reJson(1,'删除成功') :
+            $this->reJson(0,'系统错误');
+    }
+
 }
