@@ -22,22 +22,11 @@ class AdminController extends Controller
 
 	public function __construct()
 	{
+	    parent::__construct();
 		$this->salt='josefa';
 		$this->admin=new Admin();
-		//本地自动登录咯
-        if(getenv('APP_ENV')=='local'){
-            session(['userInfo'=>[
-                'id'=>1,
-                'user_name'=>'OwaraiClub',
-                'password'=>'93a637fb7cd4343af8ca539093aeec5a',
-                'bbs_child_id'=>0,
-                'fansub_id'=>0,
-                'sensitive_auth'=>'',
-                'character'=>'super',
-                'created_at'=>'2017-03-14 22:00:18',
-                'updated_at'=>'2017-03-14 22:00:20'
-            ]]);
-        }
+
+
 	}
 
     //登录
@@ -72,13 +61,13 @@ class AdminController extends Controller
 
 	public function index()
 	{
-		return view('admin.index');
+        return $this->render('admin.index');
 	}
 
 	//文章列表
 	public function articleList()
 	{
-		return view('admin.articleList');
+		return $this->render('admin.articleList');
 	}
 
 	/*
@@ -86,7 +75,7 @@ class AdminController extends Controller
 	 * */
 	public function articlePublish()
 	{
-		return view('admin.articlePublish');
+		return $this->render('admin.articlePublish');
 	}
 
 	//文章处理

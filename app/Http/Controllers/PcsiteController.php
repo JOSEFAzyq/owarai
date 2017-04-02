@@ -1,0 +1,23 @@
+<?php
+
+//门户网站通用控制爱
+namespace App\Http\Controllers;
+
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+class PcsiteController extends BaseController
+{
+    public function __construct()
+    {
+        \DB::enableQueryLog();
+    }
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function render($view,$data=[])
+    {
+        return view($view,$data);
+    }
+}
