@@ -89,7 +89,7 @@ class Controller extends BaseController
     {
         $userInfo=$this->userInfo;
         $role=$userInfo['character'];
-        
+
 
     }
 }
