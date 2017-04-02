@@ -31,12 +31,14 @@ class CreateArticleTable extends Migration
 			$table->integer('view',false,10)->unsigned()->default(0);
 			$table->integer('pay_amount',false,10)->unsigned()->default(0);
             $table->integer('ranked',false,5)->unsigned()->default(0);
-            $table->tinyInteger('status',false,2)->unsigned()->default(1);
-            $table->tinyInteger('is_home',false,2)->unsigned()->default(0);
-            $table->tinyInteger('is_top',false,2)->unsigned()->default(0);
+			$table->tinyInteger('is_home',false,2)->unsigned()->default(0);
+			$table->tinyInteger('is_top',false,2)->unsigned()->default(0);
 			$table->tinyInteger('is_elite',false,3)->unsigned()->default(0);
 			$table->tinyInteger('is_ori',false,2)->unsigned()->default(0);
 			$table->tinyInteger('is_pay',false,2)->unsigned()->default(0);
+			$table->tinyInteger('is_show',false,2)->unsigned()->default(1);
+			$table->tinyInteger('is_close',false,2)->unsigned()->default(0);
+			$table->string('author',100)->default('');
 			$table->dateTime('created_at');
 			$table->dateTime('updated_at');
 		});

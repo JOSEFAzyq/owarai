@@ -14,8 +14,10 @@
     var console = window.console || { log: function () {} };
 
     function CropAvatar($element) {
-        this.$container = $element;
 
+
+
+        this.$container = $element;
         this.$avatarView = this.$container.find('.avatar-view');
         this.$avatar = this.$container.find('img');
         this.$avatarModal = this.$container.find('#avatar-modal');
@@ -55,6 +57,7 @@
             this.initTooltip();
             this.initModal();
             this.addListener();
+            this.resizeBox();
         },
 
         addListener: function () {
@@ -191,35 +194,31 @@
         startCropper: function () {
             var _this = this;
 
-            if (this.active) {
-                this.$img.cropper('replace', this.url);
-            } else {
-                this.$img = $('<img src="' + this.url + '">');
-                this.$avatarWrapper.empty().html(this.$img);
-                this.$img.cropper({
+            var aspect_ratio = $("#aspect_ratio");
 
-                    cropBoxResizable: false,
-                    aspectRatio: 1.5,
-                    preview: this.$avatarPreview.selector,
-                    strict: false,
-                    crop: function (data) {
-                        var json = [
-                            '{"x":' + data.x,
-                            '"y":' + data.y,
-                            '"height":' + data.height,
-                            '"width":' + data.width,
-                            '"rotate":' + data.rotate + '}'
-                        ].join();
+            this.$img = $('<img src="' + this.url + '">');
+            this.$avatarWrapper.empty().html(this.$img);
+            this.$img.cropper({
 
-                        _this.$avatarData.val(json);
-                    }
-                });
+                cropBoxResizable: true,
+                aspectRatio: aspect_ratio.val() != 0 ? aspect_ratio.val():1,
+                preview: this.$avatarPreview.selector,
+                strict: false,
+                crop: function (data) {
 
+                    var json = [
+                        '{"x":' + data.x,
+                        '"y":' + data.y,
+                        '"height":' + data.height,
+                        '"width":' + data.width,
+                        '"rotate":' + data.rotate + '}'
+                    ].join();
 
+                    _this.$avatarData.val(json);
+                }
+            });
 
-
-                this.active = true;
-            }
+            this.active = true;
 
 
         },
@@ -229,7 +228,71 @@
                 this.$img.cropper('destroy');
                 this.$img.remove();
                 this.active = false;
+
             }
+        },
+
+        resizeBox : function () {
+
+            var _this = this;
+            var width        = $("#width");
+            var height       = $("#height");
+            var aspect_ratio = $("#aspect_ratio");
+
+            aspect_ratio.val(parseInt(width.val())/parseInt(height.val()));
+
+            width.bind('blur',function () {
+                if(resetCrop())
+                {
+                    _this.startCropper();
+                }
+            });
+
+            height.bind('blur',function () {
+                if(resetCrop())
+                {
+                    _this.startCropper();
+                }
+            });
+
+
+            function resetCrop() {
+
+
+                if(parseInt(height.val()) > 2000 || parseInt(width.val()) > 2000)
+                {
+                    alert('图片尺寸不适合轮播图');
+                    width.val('400');
+                    height.val('300');
+                    aspect_ratio.val(0.75);
+                    return false;
+                }
+
+                if(parseInt(height.val()) == 0 || parseInt(width.val()) == 0)
+                {
+                    alert('图片比例不适合轮播图');
+                    width.val('400');
+                    height.val('300');
+                    aspect_ratio.val(0.75);
+                    return false;
+                }
+
+                var temp = parseInt(width.val())/parseInt(height.val());
+                if(temp > 10 || temp < 0.1)
+                {
+                    alert('图片比例不适合轮播图');
+                    width.val('400');
+                    height.val('300');
+                    aspect_ratio.val(0.75);
+                    return false;
+                }
+                aspect_ratio.val(temp);
+
+                return true;
+
+            }
+
+
         },
 
         ajaxUpload: function () {
@@ -323,6 +386,9 @@
     };
 
     $(function () {
+
+
+
         return new CropAvatar($('#crop-avatar'));
     });
 

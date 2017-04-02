@@ -179,11 +179,19 @@ class AdminController extends Controller
 
 
 
+    /**
+     * 添加轮播图展示页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function carouselAdd()
     {
         return view('admin.carouselAdd');
     }
 
+    /**
+     * 添加轮播图
+     * @return string
+     */
     public function doCarouselAdd()
     {
 
@@ -197,65 +205,273 @@ class AdminController extends Controller
         if(!in_array($_FILES[$file]['type'],$allowTypes))
             return $this->reJson(0,'图片类型错误');
 
-        $carousel = new Carousel();
 
-        return $carousel->add();
+        $newDir = public_path().'/upload/carousel';
 
-    }
+        if (!file_exists($newDir))
+        {
+            mkdir($newDir);
+            chmod($newDir,"0777");
+        }
 
-    public function carouselSelect()
-    {
 
+        $upload = new  \App\Http\Libraries\UploadCropImage(['w'=>Input::get('c_width')?:100,'h'=>Input::get('c_height')?:100], $_POST['avatar_data'], $_FILES['avatar_file'],$newDir);
 
-        return view('admin.carouselList');
-    }
+        $uploadMsg      = $upload -> getMsg();
 
-    public function doCarouselSelect()
-    {
+        if ($uploadMsg != '')
+            return $this->reJson(0,$uploadMsg);
+
+        $uploadFileName = $upload -> getResult();
 
 
         $data =
             [
-                'start'=>Input::get('start'),
-                'length'=>Input::get('length')
+
+                'name'=>Input::get('c_title'),
+                'url'=>$uploadFileName,
+                'order'=>0,
+                'status'=>2,
+                'author'=>\session('user_name')?:'Someone',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+
             ];
 
-        $carousel = new Carousel();
 
-        $records = $carousel->getList($data);
+        $insert = Carousel::create($data);
 
-        return $records;
+        if($insert)
+            return $this->reJson(1,'添加成功');
+        else
+            return $this->reJson(0,'插入数据库失败');
 
     }
 
+    /**
+     * 轮播图查询页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function carouselSelect()
+    {
+        return view('admin.carouselList');
+    }
+
+    /**
+     * 轮播图查询页面ajax接口
+     * @param Request $request
+     * @return string
+     */
+    public function doCarouselSelect(Request $request)
+    {
+
+
+        $start=$request->get('start');
+        $length=$request->get('length');
+
+
+        $rs = Carousel::select('name','url','order','status','created_at','id')->offset($start)->limit($length)->orderBy('id','DESC')->get()->toArray();
+
+        foreach ($rs as $k=>$v)
+        {
+            $rs[$k]['url'] = url('upload/carousel/').'/'.$v['url'];
+        }
+
+        $data['draw'] = Input::get('draw');
+        $data['recordsTotal'] = Carousel::count();
+        $data['recordsFiltered'] = Carousel::count();
+        $data['data'] =$rs;
+        return json_encode($data);
+
+
+
+    }
+
+    /**
+     * 轮播图配置页面，这里使用order方式排序 不如 使用类似指针方式实现好，但是 数量不多，不会影响太大
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function carouselConfig()
     {
-        $id = Input::get('id');
+        $id = Input::get('id')?:1;
 
 
-        if ($id == null)
-//            return redirect()->back()->with('没有这一个。。');
+        $carousel = Carousel::find(['id'=>$id]);
+        $carousel = $carousel->toArray()[0];
+        $exist    = Carousel::inUse()->count();
 
-            $carousel = Carousel::find(['id'=>1]);
-
-        if ($carousel)
-            $carousel = $carousel->toArray()[0];
-        else
-            //            return redirect()->back()->with('没有这一个。。');
-
-            $carousel['url'] = public_path('uploads/carousel/').$carousel['url'];
-
+        $carousel['exist'] = $exist;
 
         return view('admin.carouselConfig',['carousel'=>$carousel]);
     }
 
+    /**
+     * 轮播图配置
+     * @return string
+     */
     public function doCarouselConfig()
     {
+        $id = Input::get('c_id');
+        $status = Input::get('c_status');
+        $pre_status = Input::get('pre_c_status');
+        $max_number = Input::get('max_number');
+        $order = Input::get('order');
+        $pre_order = Input::get('pre_order');
+        $name = Input::get('c_title');
+
+        if (!$id || !$status || !$name)
+        {
+            return $this->reJson(0,'参数不足');
+        }
+
+
+        if (!($pre_status == 1 && $status == 1))
+        {
+            //如果是新增
+            $order = $order <= 1 ? 1 :$order;
+            $order = $order >= $max_number ? $max_number + 1 : $order;
+        }
+        else
+        {
+            //如果只是修改顺序，且已经上线
+            $order = $order <= 1 ? 1 :$order;
+            $order = $order >= $max_number ? $max_number : $order;
+        }
+
+
+
+        //这一条数据本身之外需要更新的数据
+        $forUpdateItems = [];
+
+        //原来没上线，改成上线了
+        if ($status == 1 && $pre_status == 2)
+        {
+            $items = Carousel::where('status',1)->select('id','order')->orderBy('order')->get()->toArray();
+            if ($max_number > $order)
+            {
+                foreach ($items as $k=>$v)
+                {
+                    if ($v['id'] == $id) continue;
+
+                    if($items[$k]['order'] >= $order)
+                    {
+                        $forUpdateItems[] = ['id'=>$v['id'],'order'=>$items[$k]['order'] + 1 ];
+                    }
+                }
+            }
+        }
+
+        //原来上线了，改成没上线
+        if ($status == 2 && $pre_status == 1)
+        {
+            $items = Carousel::where('status',1)->select('id','order')->orderBy('order')->get()->toArray();
+            foreach ($items as $v)
+            {
+                if ($v['id'] == $id) continue;
+
+                if ($v['order'] >= $order)
+                {
+                    $forUpdateItems[] = ['id'=>$v['id'],'order'=>$v['order'] - 1 ];
+                }
+            }
+        }
+
+        //原来上线，后来也上线,只是修改了顺序
+        if ($status == 1 && $pre_status == 1)
+        {
+            if ($order != $pre_order)
+            {
+
+                $items = Carousel::where('status',1)->select('id','order')->orderBy('order')->get()->toArray();
+                $i     = 1;
+
+                //先把数据去除要改变的数据，把order重置成12345 连续的顺序
+                foreach ($items as $k=>$v)
+                {
+                    if ($v['id'] == $id)
+                    {
+                        unset($items[$k]);
+                        continue;
+                    }
+
+                    $items[$k]['order']  = $i;
+                    $i++;
+
+                }
+
+                //按照新增操作
+                foreach ($items as $k=>$v)
+                {
+                    if($v['order'] >= $order)
+                        $forUpdateItems[] = ['id'=>$v['id'],'order'=>$items[$k]['order'] + 1 ];
+                    else
+                        $forUpdateItems[] = ['id'=>$v['id'],'order'=>$items[$k]['order']];
+                }
+
+
+            }
+
+        }
+
+        if ($forUpdateItems)
+        {
+
+            DB::beginTransaction();
+            try{
+                foreach ($forUpdateItems as $v)
+                {
+                    Carousel::where('id',$v['id'])->update(['order'=>$v['order'],'updated_at'=>date('Y-m-d H:i:s')]);
+                }
+            }
+            catch (Exception $e)
+            {
+                DB::rollback();
+                return $this->reJson(0,$e->getMessage());
+            }
+            DB::commit();
+
+
+        }
+
+        Carousel::where('id',$id)->update(['order'=>$order,'status'=>$status,'name'=>$name,'updated_at'=>date('Y-m-d H:i:s')]);
+
+        return $this->reJson(1,'修改成功');
 
     }
 
+    /**
+     * 删除轮播图
+     * @return string
+     */
+    public function carouselDelete()
+    {
+        $id = Input::get('id');
+
+        if (!$id)
+            return $this->reJson(0,'参数不足');
+
+        $item = Carousel::where('id',$id)->select('url')->get()->toArray()[0];
+
+        if (!$item)
+            return $this->reJson(0,'当前项不存在');
+
+        if (is_file(public_path('upload/carousel').'/'.$item['url']))
+            unlink(public_path('upload/carousel').'/'.$item['url']);
+
+        return Carousel::where('id',$id)->delete() ? $this->reJson(1,'删除成功') : $this->reJson(0,'删除失败');
+
+    }
+
+    /**
+     * 以json格式返回数组，简写
+     * @param int $status
+     * @param string $msg
+     * @param string $data
+     * @return string
+     */
     private function reJson($status = 0,$msg = '',$data = '')
     {
         return json_encode(["status"=>$status,"msg"=>$msg,"data"=>$data]);
     }
+
 }
