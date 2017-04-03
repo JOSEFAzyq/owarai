@@ -59,44 +59,41 @@
                     <a href="{{URL::action('AdminController@index')}}"><i class="fa fa-dashboard fa-fw"></i> 仪表盘</a>
                 </li>
                 {{--文章管理--}}
+                <?php foreach ($authority as $v){?>
                 <li>
-                    <a href="#"><i class="fa fa-file-text fa-fw"></i> 文章管理<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa {{$v['class']}} fa-fw"></i> {{$v['title']}}<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        <?php foreach ($v['column'] as $value){?>
                         <li>
-                            <a href="{{URL::action('AdminController@articleList')}}">文章列表</a>
+                            <a href="{{$value['action']}}">{{$value['title']}}</a>
                         </li>
-                        <li>
-                            <a href="{{URL::action('AdminController@articlePublish')}}">文章发布</a>
-                        </li>
+                        <?php }?>
                     </ul>
                 </li>
+                <?php }?>
                 {{--资讯管理--}}
-                <li>
-                    <a href="#"><i class="fa fa-dot-circle-o fa-fw"></i> 资讯管理<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-dot-circle-o fa-fw"></i> 资讯管理<span class="fa arrow"></span></a>--}}
+                    {{--<ul class="nav nav-second-level">--}}
+                        {{--<li>--}}
+                            {{--<a href="{{URL::action('AdminController@carouselSelect')}}">轮播内容列表</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="{{URL::action('AdminController@carouselAdd')}}">轮播内容添加</a>--}}
 
-                            <a href="{{URL::action('AdminController@carouselSelect')}}">轮播内容列表</a>
-                        </li>
-                        <li>
-                            <a href="{{URL::action('AdminController@carouselAdd')}}">轮播内容添加</a>
-
-                        </li>
-
-
-
-                    </ul>
-                </li>
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
                 {{--字幕组管理--}}
-                <li>
-                    <a href="#"><i class="fa fa-group fa-fw"></i> 字幕组管理<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{URL::action('AdminController@articleList')}}">字幕组列表</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-group fa-fw"></i> 字幕组管理<span class="fa arrow"></span></a>--}}
+                    {{--<ul class="nav nav-second-level">--}}
+                        {{--<li>--}}
+                            {{--<a href="{{URL::action('AdminController@articleList')}}">字幕组列表</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </div>

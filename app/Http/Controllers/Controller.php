@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\URL;
 
 class Controller extends BaseController
 {
@@ -37,11 +38,11 @@ class Controller extends BaseController
                 'column'=>[
                     [
                         'title'=>'文章列表',
-                        'action'=>'URL::action(\'AdminController@articleList\')'
+                        'action'=>URL::action('AdminController@articleList')
                     ],
                     [
                         'title'=>'文章发布',
-                        'action'=>'URL::action(\'AdminController@articlePublish\')'
+                        'action'=>URL::action('AdminController@articlePublish')
                     ]
                 ]
             ],
@@ -51,11 +52,11 @@ class Controller extends BaseController
                 'column'=>[
                     [
                         'title'=>'轮播内容',
-                        'action'=>'URL::action(\'AdminController@articleList\')'
+                        'action'=>URL::action('AdminController@articleList')
                     ],
                     [
                         'title'=>'资源内容',
-                        'action'=>'URL::action(\'AdminController@articleList\')'
+                        'action'=>URL::action('AdminController@articleList')
                     ]
                 ]
             ],
@@ -65,20 +66,22 @@ class Controller extends BaseController
                 'column'=>[
                     [
                         'title'=>'字幕组列表',
-                        'action'=>'URL::action(\'AdminController@articleList\')'
+                        'action'=>URL::action('AdminController@articleList')
                     ]
                 ]
             ]
         ];
         //权限设置
-        $this->role['funSubAdmin']=[['title'=>'文章管理']];
+        $this->role['funSubAdmin']=['文章管理'];
+        $this->role['super']=['文章管理','轮播内容','字幕组管理'];
         \DB::enableQueryLog();
     }
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function render($view,$data=[])
     {
-        $this->checkRole();
+        $data['authority']=$this->checkRole();
+        var_dump($data);
         return view($view,$data);
     }
 
@@ -89,7 +92,24 @@ class Controller extends BaseController
     {
         $userInfo=$this->userInfo;
         $role=$userInfo['character'];
-
+        $authority=$this->role[$role];
+        $tmp=[];
+        foreach ($this->authority as $k=>$v){
+            foreach ($authority as $value){
+                if ($value==$v['title']){
+                    $tmp[$k]=$v;
+                }else{
+                    foreach ($v['column'] as $column){
+                        if($value==$column['title']){
+                            $tmp[$k]['title']=$v['title'];
+                            $tmp[$k]['class']=$v['class'];
+                            $tmp[$k]['column'][]=$column;
+                        }
+                    }
+                }
+            }
+        }
+        return $tmp;
 
     }
 }
