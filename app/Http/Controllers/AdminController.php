@@ -23,8 +23,6 @@ class AdminController extends Controller
 	{
 	    parent::__construct();
 		$this->admin=new Admin();
-
-
 	}
 
     //登录
@@ -33,13 +31,12 @@ class AdminController extends Controller
 		if($this->admin->checkLogin($request)){
 			return redirect('admin/index');
 		}
-		return $this->render('admin.login');
+		return view('admin.login');
 	}
 
 	//登出
 	public function logOut()
 	{
-
 		session()->forget('userInfo');
 		return redirect('admin/login');
 	}
@@ -161,7 +158,7 @@ class AdminController extends Controller
 		//var_dump(route('home'));
 //        $rs=Article::all();
 //        var_dump($rs);
-        var_dump(md5('josefa.owarai'));
+        var_dump(md5('ogirijosefa.'));
 	}
 
 

@@ -17,7 +17,7 @@ class Controller extends BaseController
     public function __construct()
     {
         //本地自动登录咯
-        if(getenv('APP_ENV')=='local'){
+        if(false&&getenv('APP_ENV')=='local'){
             session(['userInfo'=>[
                 'id'=>1,
                 'user_name'=>'OwaraiClub',
@@ -30,7 +30,6 @@ class Controller extends BaseController
                 'updated_at'=>'2017-03-14 22:00:20'
             ]]);
         }
-        $this->userInfo=session('userInfo');
         $this->authority=[
             [
                 'title'=>'文章管理',
@@ -72,7 +71,7 @@ class Controller extends BaseController
             ]
         ];
         //权限设置
-        $this->role['funSubAdmin']=['文章管理'];
+        $this->role['subfan']=['文章管理'];
         $this->role['super']=['文章管理','资讯管理','字幕组管理'];
         \DB::enableQueryLog();
     }
@@ -90,7 +89,7 @@ class Controller extends BaseController
      */
     public function checkRole()
     {
-        $userInfo=$this->userInfo;
+        $userInfo=session('userInfo');
         $role=$userInfo['character'];
         $authority=$this->role[$role];
         $tmp=[];

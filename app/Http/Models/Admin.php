@@ -13,7 +13,7 @@ class Admin extends Model
 
     public function __construct()
     {
-        $this->salt='josefa';
+        $this->salt='josefa.';
         $this->valid=['super'];
 	}
 

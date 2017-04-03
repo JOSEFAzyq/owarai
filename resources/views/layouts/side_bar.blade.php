@@ -8,9 +8,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
-
-        <a class="navbar-brand" href="{{URL::action('AdminController@index')}}">笑神后台</a>
+        <a class="navbar-brand" href="{{URL::action('AdminController@index')}}">某科学的后台</a>
 
     </div>
     <!-- /.navbar-header -->
@@ -28,8 +26,6 @@
 
                 </li>
                 <li class="divider"></li>
-
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
 
                 <li><a href="{{URL::action('AdminController@logOut')}}"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
 
