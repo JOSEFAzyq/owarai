@@ -68,8 +68,9 @@ class AdminController extends Controller
 	/*
 	 * 文章发布
 	 * */
-	public function articlePublish()
+	public function articlePublish($id=0)
 	{
+	    dd($id);
 		return $this->render('admin.articlePublish');
 	}
 
