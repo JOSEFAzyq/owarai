@@ -38,3 +38,10 @@ $factory->defineAs(App\Http\Models\Article::class,'article',function (Faker\Gene
 		'view'=>rand(0,10000),
 	];
 });
+
+$factory->defineAs(App\Http\Models\Admin::class,'admin',function () {
+    return[
+        'user_name'=>'owaraiClub',
+        'password'=>md5('josefa.owarai'),
+    ];
+});

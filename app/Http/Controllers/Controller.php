@@ -51,12 +51,12 @@ class Controller extends BaseController
                 'class'=>'fa fa-dot-circle-o fa-fw',
                 'column'=>[
                     [
-                        'title'=>'轮播内容',
-                        'action'=>URL::action('AdminController@articleList')
+                        'title'=>'轮播内容列表',
+                        'action'=>URL::action('AdminController@carouselSelect')
                     ],
                     [
-                        'title'=>'资源内容',
-                        'action'=>URL::action('AdminController@articleList')
+                        'title'=>'轮播内容添加',
+                        'action'=>URL::action('AdminController@carouselAdd')
                     ]
                 ]
             ],
@@ -73,7 +73,7 @@ class Controller extends BaseController
         ];
         //权限设置
         $this->role['funSubAdmin']=['文章管理'];
-        $this->role['super']=['文章管理','轮播内容','字幕组管理'];
+        $this->role['super']=['文章管理','资讯管理','字幕组管理'];
         \DB::enableQueryLog();
     }
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -81,7 +81,7 @@ class Controller extends BaseController
     public function render($view,$data=[])
     {
         $data['authority']=$this->checkRole();
-        var_dump($data);
+        $data['character']=session('userInfo')['character'];
         return view($view,$data);
     }
 

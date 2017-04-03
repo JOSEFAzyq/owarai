@@ -17,13 +17,11 @@ use App\http\Models\Carousel;
 class AdminController extends Controller
 {
 
-	private $salt=null;
 	protected $admin;
 
 	public function __construct()
 	{
 	    parent::__construct();
-		$this->salt='josefa';
 		$this->admin=new Admin();
 
 
@@ -35,7 +33,7 @@ class AdminController extends Controller
 		if($this->admin->checkLogin($request)){
 			return redirect('admin/index');
 		}
-		return view('admin.login');
+		return $this->render('admin.login');
 	}
 
 	//登出
@@ -161,8 +159,9 @@ class AdminController extends Controller
 
 		/*Admin::test();*/
 		//var_dump(route('home'));
-        $rs=Article::all();
-        var_dump($rs);
+//        $rs=Article::all();
+//        var_dump($rs);
+        var_dump(md5('josefa.owarai'));
 	}
 
 
@@ -174,7 +173,7 @@ class AdminController extends Controller
      */
     public function carouselAdd()
     {
-        return view('admin.carouselAdd');
+        return $this->render('admin.carouselAdd');
     }
 
     /**
@@ -243,7 +242,7 @@ class AdminController extends Controller
      */
     public function carouselSelect()
     {
-        return view('admin.carouselList');
+        return $this->render('admin.carouselList');
     }
 
     /**
@@ -291,7 +290,7 @@ class AdminController extends Controller
 
         $carousel['exist'] = $exist;
 
-        return view('admin.carouselConfig',['carousel'=>$carousel]);
+        return $this->render('admin.carouselConfig',['carousel'=>$carousel]);
     }
 
     /**
@@ -508,7 +507,7 @@ class AdminController extends Controller
         if (!$this->checkAuth())
             return view('admin.index');
 
-        return view('admin.addSubTitleGroup');
+        return $this->render('admin.addSubTitleGroup');
     }
 
     /**
